@@ -1,0 +1,1106 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'platform.moc.hpp'
+**
+** Created: Wed Jul 17 05:52:48 2013
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.6.3)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'platform.moc.hpp' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 62
+#error "This file was generated using the moc from 4.6.3. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_phoenix__pTimer[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      17,   16,   16,   16, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pTimer[] = {
+    "phoenix::pTimer\0\0onActivate()\0"
+};
+
+const QMetaObject phoenix::pTimer::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pTimer,
+      qt_meta_data_phoenix__pTimer, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pTimer::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pTimer::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pTimer::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pTimer))
+        return static_cast<void*>(const_cast< pTimer*>(this));
+    if (!strcmp(_clname, "pObject"))
+        return static_cast< pObject*>(const_cast< pTimer*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pTimer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onActivate(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pWindow[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       0,    0, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pWindow[] = {
+    "phoenix::pWindow\0"
+};
+
+const QMetaObject phoenix::pWindow::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pWindow,
+      qt_meta_data_phoenix__pWindow, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pWindow::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pWindow::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pWindow::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pWindow))
+        return static_cast<void*>(const_cast< pWindow*>(this));
+    if (!strcmp(_clname, "pObject"))
+        return static_cast< pObject*>(const_cast< pWindow*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pItem[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      16,   15,   15,   15, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pItem[] = {
+    "phoenix::pItem\0\0onActivate()\0"
+};
+
+const QMetaObject phoenix::pItem::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pItem,
+      qt_meta_data_phoenix__pItem, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pItem::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pItem::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pItem::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pItem))
+        return static_cast<void*>(const_cast< pItem*>(this));
+    if (!strcmp(_clname, "pAction"))
+        return static_cast< pAction*>(const_cast< pItem*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pItem::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onActivate(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pCheckItem[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      21,   20,   20,   20, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pCheckItem[] = {
+    "phoenix::pCheckItem\0\0onToggle()\0"
+};
+
+const QMetaObject phoenix::pCheckItem::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pCheckItem,
+      qt_meta_data_phoenix__pCheckItem, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pCheckItem::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pCheckItem::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pCheckItem::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pCheckItem))
+        return static_cast<void*>(const_cast< pCheckItem*>(this));
+    if (!strcmp(_clname, "pAction"))
+        return static_cast< pAction*>(const_cast< pCheckItem*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pCheckItem::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onToggle(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pRadioItem[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      21,   20,   20,   20, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pRadioItem[] = {
+    "phoenix::pRadioItem\0\0onActivate()\0"
+};
+
+const QMetaObject phoenix::pRadioItem::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pRadioItem,
+      qt_meta_data_phoenix__pRadioItem, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pRadioItem::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pRadioItem::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pRadioItem::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pRadioItem))
+        return static_cast<void*>(const_cast< pRadioItem*>(this));
+    if (!strcmp(_clname, "pAction"))
+        return static_cast< pAction*>(const_cast< pRadioItem*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pRadioItem::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onActivate(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pButton[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      18,   17,   17,   17, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pButton[] = {
+    "phoenix::pButton\0\0onActivate()\0"
+};
+
+const QMetaObject phoenix::pButton::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pButton,
+      qt_meta_data_phoenix__pButton, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pButton::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pButton::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pButton::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pButton))
+        return static_cast<void*>(const_cast< pButton*>(this));
+    if (!strcmp(_clname, "pWidget"))
+        return static_cast< pWidget*>(const_cast< pButton*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pButton::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onActivate(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pCanvas[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       0,    0, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pCanvas[] = {
+    "phoenix::pCanvas\0"
+};
+
+const QMetaObject phoenix::pCanvas::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pCanvas,
+      qt_meta_data_phoenix__pCanvas, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pCanvas::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pCanvas::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pCanvas::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pCanvas))
+        return static_cast<void*>(const_cast< pCanvas*>(this));
+    if (!strcmp(_clname, "pWidget"))
+        return static_cast< pWidget*>(const_cast< pCanvas*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pCanvas::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pCheckButton[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      23,   22,   22,   22, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pCheckButton[] = {
+    "phoenix::pCheckButton\0\0onToggle()\0"
+};
+
+const QMetaObject phoenix::pCheckButton::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pCheckButton,
+      qt_meta_data_phoenix__pCheckButton, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pCheckButton::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pCheckButton::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pCheckButton::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pCheckButton))
+        return static_cast<void*>(const_cast< pCheckButton*>(this));
+    if (!strcmp(_clname, "pWidget"))
+        return static_cast< pWidget*>(const_cast< pCheckButton*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pCheckButton::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onToggle(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pComboButton[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      23,   22,   22,   22, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pComboButton[] = {
+    "phoenix::pComboButton\0\0onChange()\0"
+};
+
+const QMetaObject phoenix::pComboButton::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pComboButton,
+      qt_meta_data_phoenix__pComboButton, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pComboButton::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pComboButton::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pComboButton::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pComboButton))
+        return static_cast<void*>(const_cast< pComboButton*>(this));
+    if (!strcmp(_clname, "pWidget"))
+        return static_cast< pWidget*>(const_cast< pComboButton*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pComboButton::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onChange(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pHexEdit[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      19,   18,   18,   18, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pHexEdit[] = {
+    "phoenix::pHexEdit\0\0onScroll()\0"
+};
+
+const QMetaObject phoenix::pHexEdit::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pHexEdit,
+      qt_meta_data_phoenix__pHexEdit, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pHexEdit::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pHexEdit::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pHexEdit::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pHexEdit))
+        return static_cast<void*>(const_cast< pHexEdit*>(this));
+    if (!strcmp(_clname, "pWidget"))
+        return static_cast< pWidget*>(const_cast< pHexEdit*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pHexEdit::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onScroll(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pHorizontalScroller[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      30,   29,   29,   29, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pHorizontalScroller[] = {
+    "phoenix::pHorizontalScroller\0\0onChange()\0"
+};
+
+const QMetaObject phoenix::pHorizontalScroller::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pHorizontalScroller,
+      qt_meta_data_phoenix__pHorizontalScroller, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pHorizontalScroller::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pHorizontalScroller::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pHorizontalScroller::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pHorizontalScroller))
+        return static_cast<void*>(const_cast< pHorizontalScroller*>(this));
+    if (!strcmp(_clname, "pWidget"))
+        return static_cast< pWidget*>(const_cast< pHorizontalScroller*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pHorizontalScroller::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onChange(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pHorizontalSlider[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      28,   27,   27,   27, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pHorizontalSlider[] = {
+    "phoenix::pHorizontalSlider\0\0onChange()\0"
+};
+
+const QMetaObject phoenix::pHorizontalSlider::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pHorizontalSlider,
+      qt_meta_data_phoenix__pHorizontalSlider, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pHorizontalSlider::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pHorizontalSlider::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pHorizontalSlider::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pHorizontalSlider))
+        return static_cast<void*>(const_cast< pHorizontalSlider*>(this));
+    if (!strcmp(_clname, "pWidget"))
+        return static_cast< pWidget*>(const_cast< pHorizontalSlider*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pHorizontalSlider::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onChange(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pLineEdit[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       2,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      20,   19,   19,   19, 0x0a,
+      33,   19,   19,   19, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pLineEdit[] = {
+    "phoenix::pLineEdit\0\0onActivate()\0"
+    "onChange()\0"
+};
+
+const QMetaObject phoenix::pLineEdit::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pLineEdit,
+      qt_meta_data_phoenix__pLineEdit, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pLineEdit::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pLineEdit::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pLineEdit::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pLineEdit))
+        return static_cast<void*>(const_cast< pLineEdit*>(this));
+    if (!strcmp(_clname, "pWidget"))
+        return static_cast< pWidget*>(const_cast< pLineEdit*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pLineEdit::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onActivate(); break;
+        case 1: onChange(); break;
+        default: ;
+        }
+        _id -= 2;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pListView[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       3,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      20,   19,   19,   19, 0x0a,
+      38,   33,   19,   19, 0x0a,
+      65,   33,   19,   19, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pListView[] = {
+    "phoenix::pListView\0\0onActivate()\0item\0"
+    "onChange(QTreeWidgetItem*)\0"
+    "onToggle(QTreeWidgetItem*)\0"
+};
+
+const QMetaObject phoenix::pListView::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pListView,
+      qt_meta_data_phoenix__pListView, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pListView::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pListView::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pListView::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pListView))
+        return static_cast<void*>(const_cast< pListView*>(this));
+    if (!strcmp(_clname, "pWidget"))
+        return static_cast< pWidget*>(const_cast< pListView*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pListView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onActivate(); break;
+        case 1: onChange((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1]))); break;
+        case 2: onToggle((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1]))); break;
+        default: ;
+        }
+        _id -= 3;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pRadioButton[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      23,   22,   22,   22, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pRadioButton[] = {
+    "phoenix::pRadioButton\0\0onActivate()\0"
+};
+
+const QMetaObject phoenix::pRadioButton::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pRadioButton,
+      qt_meta_data_phoenix__pRadioButton, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pRadioButton::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pRadioButton::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pRadioButton::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pRadioButton))
+        return static_cast<void*>(const_cast< pRadioButton*>(this));
+    if (!strcmp(_clname, "pWidget"))
+        return static_cast< pWidget*>(const_cast< pRadioButton*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pRadioButton::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onActivate(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pTextEdit[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      20,   19,   19,   19, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pTextEdit[] = {
+    "phoenix::pTextEdit\0\0onChange()\0"
+};
+
+const QMetaObject phoenix::pTextEdit::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pTextEdit,
+      qt_meta_data_phoenix__pTextEdit, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pTextEdit::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pTextEdit::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pTextEdit::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pTextEdit))
+        return static_cast<void*>(const_cast< pTextEdit*>(this));
+    if (!strcmp(_clname, "pWidget"))
+        return static_cast< pWidget*>(const_cast< pTextEdit*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pTextEdit::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onChange(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pVerticalScroller[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      28,   27,   27,   27, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pVerticalScroller[] = {
+    "phoenix::pVerticalScroller\0\0onChange()\0"
+};
+
+const QMetaObject phoenix::pVerticalScroller::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pVerticalScroller,
+      qt_meta_data_phoenix__pVerticalScroller, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pVerticalScroller::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pVerticalScroller::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pVerticalScroller::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pVerticalScroller))
+        return static_cast<void*>(const_cast< pVerticalScroller*>(this));
+    if (!strcmp(_clname, "pWidget"))
+        return static_cast< pWidget*>(const_cast< pVerticalScroller*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pVerticalScroller::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onChange(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+static const uint qt_meta_data_phoenix__pVerticalSlider[] = {
+
+ // content:
+       4,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       1,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      26,   25,   25,   25, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_phoenix__pVerticalSlider[] = {
+    "phoenix::pVerticalSlider\0\0onChange()\0"
+};
+
+const QMetaObject phoenix::pVerticalSlider::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_phoenix__pVerticalSlider,
+      qt_meta_data_phoenix__pVerticalSlider, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &phoenix::pVerticalSlider::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *phoenix::pVerticalSlider::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *phoenix::pVerticalSlider::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_phoenix__pVerticalSlider))
+        return static_cast<void*>(const_cast< pVerticalSlider*>(this));
+    if (!strcmp(_clname, "pWidget"))
+        return static_cast< pWidget*>(const_cast< pVerticalSlider*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int phoenix::pVerticalSlider::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: onChange(); break;
+        default: ;
+        }
+        _id -= 1;
+    }
+    return _id;
+}
+QT_END_MOC_NAMESPACE
