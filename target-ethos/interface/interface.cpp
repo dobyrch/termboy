@@ -55,21 +55,35 @@ uint32_t Interface::videoColor(unsigned source, uint16_t r, uint16_t g, uint16_t
 void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned width, unsigned height) {
   uint32_t* output;
   unsigned outputPitch;
+
+  wchar_t full_block[] = {L'\u2588', L'\u2588', L'\0'};
   
   for (int x = 0; x < 160; ++x) {
     for (int y = 0; y < 144; ++y) {
-        switch (data[y + 160*x]) {
+        switch (data[x + 160*y]) {
           case 0x052505:
-            mvaddch(x, y, '@');
+            attron(COLOR_PAIR(1));
+            mvaddwstr(y, x, full_block);
+            attroff(COLOR_PAIR(1));
             break;
           case 0x1d551d:
-            mvaddch(x, y, '#');
+            attron(COLOR_PAIR(2));
+            //attron(A_BOLD);
+            mvaddwstr(y, x, full_block);
+            attroff(COLOR_PAIR(2));
+            //attroff(A_BOLD);
             break;
           case 0x8bac05:
-            mvaddch(x, y, '%');
+            attron(COLOR_PAIR(3));
+            mvaddwstr(y, x, full_block);
+            attroff(COLOR_PAIR(3));
             break;
           case 0x9abb05:
-            mvaddch(x, y, '.');
+            attron(COLOR_PAIR(4));
+            //attron(A_BOLD);
+            mvaddwstr(y, x, full_block);
+            attroff(COLOR_PAIR(4));
+            //attroff(A_BOLD);
             break;
           }
     }

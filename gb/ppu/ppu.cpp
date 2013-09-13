@@ -153,7 +153,13 @@ void PPU::power() {
 }
 
 PPU::PPU() {
+    setlocale(LC_ALL, "");
     initscr();
+    start_color();
+    init_pair(1, COLOR_BLACK, COLOR_BLACK);
+    init_pair(2, COLOR_RED, COLOR_RED);
+    init_pair(3, COLOR_GREEN, COLOR_GREEN);
+    init_pair(4, COLOR_YELLOW, COLOR_YELLOW);
 }
 
 }

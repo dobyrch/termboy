@@ -13,8 +13,8 @@ target  := ethos
 # console := true
 
 # compiler
-flags   += -I. -O3 -fomit-frame-pointer
-link    += -lncurses
+flags   += -I. -O3 -fomit-frame-pointer 
+link    += -lncursesw
 objects := libco
 
 # profile-guided optimization mode
