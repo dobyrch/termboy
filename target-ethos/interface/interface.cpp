@@ -56,30 +56,30 @@ void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned widt
   uint32_t* output;
   unsigned outputPitch;
 
-  wchar_t full_block[] = {L'\u2588', L'\u2588', L'\0'};
-  wchar_t full_blank[] = {L' ', L' ', L'\0'};
+  wchar_t full_block[] = {L'\u2588', L'\0'};
+  wchar_t full_blank[] = {L' ', L'\0'};
   
   for (int x = 0; x < 160; ++x) {
     for (int y = 0; y < 144; ++y) {
         switch (data[x + 160*y]) {
           case 0x052505:
             attron(COLOR_PAIR(1));
-            mvaddwstr(y, x*2, full_blank);
+            mvaddwstr(y, x, full_blank);
             attroff(COLOR_PAIR(1));
             break;
           case 0x1d551d:
             attron(COLOR_PAIR(1));
-            mvaddwstr(y, x*2, full_block);
+            mvaddwstr(y, x, full_block);
             attroff(COLOR_PAIR(1));
             break;
           case 0x8bac05:
             attron(COLOR_PAIR(2));
-            mvaddwstr(y, x*2, full_blank);
+            mvaddwstr(y, x, full_blank);
             attroff(COLOR_PAIR(2));
             break;
           case 0x9abb05:
             attron(COLOR_PAIR(2));
-            mvaddwstr(y, x*2, full_block);
+            mvaddwstr(y, x, full_block);
             attroff(COLOR_PAIR(2));
             break;
           }
