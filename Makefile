@@ -65,7 +65,7 @@ compile = \
 
 %.o: $<; $(call compile)
 
-all: build; cd ananke; make; make install; chmod +rx /usr/local/lib/libananke*	
+all: build; cd ananke; make; make install; sudo chmod +rx /usr/local/lib/libananke*	
 
 obj/libco.o: libco/libco.c libco/*
 
