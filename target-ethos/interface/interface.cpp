@@ -1,4 +1,4 @@
-#include <curses.h>
+#include <ncursesw/curses.h>
 #include "../ethos.hpp"
 Interface* interface = nullptr;
 

@@ -1,4 +1,4 @@
-#include <curses.h>
+#include <ncursesw/curses.h>
 #include <gb/gb.hpp>
 
 //LY     =   0-153
