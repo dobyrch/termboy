@@ -53,37 +53,57 @@ uint32_t Interface::videoColor(unsigned source, uint16_t r, uint16_t g, uint16_t
 }
 
 void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned width, unsigned height) {
+  static int black = 0;
+  static int red = 1;
+  static int green = 2;
+  static int yellow = 3;
+  int cpair;
+
   uint32_t* output;
   unsigned outputPitch;
 
-  wchar_t full_block[] = {L'\u2588', L'\0'};
-  wchar_t full_blank[] = {L' ', L'\0'};
-
+  //Unicode LEFT HALF BLOCK
+  wchar_t block[] = {L'\u258c', L'\0'};
   
-  for (int x = 0; x < 160; ++x) {
+  for (int x = 0; x < 160; x += 2) {
     for (int y = 0; y < 144; ++y) {
         switch (data[x + 160*y]) {
           case 0x052505:
-            attron(COLOR_PAIR(1));
-            mvaddwstr(y, x, full_block);
-            attroff(COLOR_PAIR(1));
+            cpair = black;
             break;
           case 0x1d551d:
-            attron(COLOR_PAIR(2));
-            mvaddwstr(y, x, full_block);
-            attroff(COLOR_PAIR(2));
+            cpair = red;
             break;
           case 0x8bac05:
-            attron(COLOR_PAIR(3));
-            mvaddwstr(y, x, full_block);
-            attroff(COLOR_PAIR(3));
+            cpair = green;
             break;
           case 0x9abb05:
-            attron(COLOR_PAIR(4));
-            mvaddwstr(y, x, full_block);
-            attroff(COLOR_PAIR(4));
+            cpair = yellow;
             break;
-          }
+        }
+
+        cpair = cpair * 4;
+
+        switch (data[x + 160*y + 1]) {
+          case 0x052505:
+            cpair += black;
+            break;
+          case 0x1d551d:
+            cpair += red;
+            break;
+          case 0x8bac05:
+            cpair += green;
+            break;
+          case 0x9abb05:
+            cpair += yellow;
+            break;
+        }
+
+        cpair += 1;
+
+        attron(COLOR_PAIR(cpair));
+        mvaddwstr(y, x/2, block);
+        attroff(COLOR_PAIR(cpair));
     }
   }
 
