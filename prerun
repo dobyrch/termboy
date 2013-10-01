@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+
+echo -en '\e]P0052505' # Black
+echo -en '\e]P11d551d' # Red
+echo -en '\e]P28bac05' # Green
+echo -en '\e]P39abb05' # Yellow
+

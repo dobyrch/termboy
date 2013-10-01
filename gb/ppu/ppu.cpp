@@ -157,8 +157,9 @@ PPU::PPU() {
     initscr();
     start_color();
     init_pair(1, COLOR_BLACK, COLOR_BLACK);
-    init_pair(2, COLOR_WHITE, COLOR_WHITE);
-    attron(A_BOLD);
+    init_pair(2, COLOR_RED, COLOR_RED);
+    init_pair(3, COLOR_GREEN, COLOR_GREEN);
+    init_pair(4, COLOR_YELLOW, COLOR_YELLOW);
 }
 
 }
