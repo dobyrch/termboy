@@ -154,7 +154,8 @@ void PPU::power() {
 
 PPU::PPU() {
     setlocale(LC_ALL, "");
-    initscr();
+    //check return value
+    nodelay(initscr(), true);
     start_color();
     //Can use color pairs between 0 and COLOR_PAIRS-1 (COLOR_PAIRS=64 on my machine
     init_pair(1, COLOR_BLACK, COLOR_BLACK);

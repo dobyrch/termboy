@@ -1,3 +1,4 @@
+#include <ncursesw/curses.h>
 #include "../ethos.hpp"
 #include "hotkeys.cpp"
 InputManager* inputManager = nullptr;
@@ -78,7 +79,7 @@ bool DigitalInput::bind(unsigned scancode, int16_t value) {
 }
 
 int16_t DigitalInput::poll() {
-  if(program->focused() == false) return 0;
+  //if(program->focused() == false) return 0;
   bool result = logic;
 
   for(auto& item : inputList) {
@@ -240,7 +241,33 @@ void InputManager::poll() {
   if(presentation->focused()) pollHotkeys();
 }
 
+//Called by DigitalInput::poll
 int16_t InputManager::poll(unsigned scancode) {
+  //char buff[20]; 
+
+  /*if (this->scancode[activeScancode][scancode] != 0) {
+    sprintf(buff, "%d:%d\n", activeScancode, scancode);
+    addstr(buff);
+  }*/
+
+  int ch = getch();
+
+  if (ch != ERR) {
+    //sprintf(buff, "getch: %d\n", ch);
+    //addstr(buff);
+    
+    switch (ch) {
+      case 'A':  this->scancode[activeScancode][89] = 1; break;
+      case 'B':  this->scancode[activeScancode][90] = 1; break;
+      case 'C':  this->scancode[activeScancode][92] = 1; break;
+      case 'D':  this->scancode[activeScancode][91] = 1; break;
+      case 'z':  this->scancode[activeScancode][62] = 1; break;
+      case 'x':  this->scancode[activeScancode][60] = 1; break;
+      case 10:  this->scancode[activeScancode][94] = 1; break;
+      case 127:  this->scancode[activeScancode][30] = 1; break;
+    }
+  }
+
   return this->scancode[activeScancode][scancode];
 }
 

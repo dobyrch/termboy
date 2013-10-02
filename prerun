@@ -5,4 +5,8 @@ echo -en '\e]P11d551d' # Red
 echo -en '\e]P28bac05' # Green
 echo -en '\e]P39abb05' # Yellow
 
+setterm -repeat on
+#set repeat rate (what's the default?)
+kdbrate -d 250
+
 setfont -h4

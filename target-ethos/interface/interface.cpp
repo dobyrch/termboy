@@ -108,6 +108,7 @@ void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned widt
   }
 
   refresh();
+  
 
   if(video.lock(output, outputPitch, width, height)) {
     pitch >>= 2, outputPitch >>= 2;
