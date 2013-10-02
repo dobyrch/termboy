@@ -59,15 +59,12 @@ void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned widt
   static int yellow = 3;
   int cpair;
 
-  uint32_t* output;
-  unsigned outputPitch;
-
   //Unicode LEFT HALF BLOCK
   wchar_t block[] = {L'\u258c', L'\0'};
   
-  for (int x = 0; x < 160; x += 2) {
-    for (int y = 0; y < 144; ++y) {
-        switch (data[x + 160*y]) {
+  for (int x = 0; x < width; x += 2) {
+    for (int y = 0; y < height; ++y) {
+        switch (data[x + width*y]) {
           case 0x052505:
             cpair = black;
             break;
@@ -84,7 +81,7 @@ void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned widt
 
         cpair = cpair * 4;
 
-        switch (data[x + 160*y + 1]) {
+        switch (data[x + width*y + 1]) {
           case 0x052505:
             cpair += black;
             break;
@@ -108,35 +105,8 @@ void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned widt
   }
 
   refresh();
-  
 
-  if(video.lock(output, outputPitch, width, height)) {
-    pitch >>= 2, outputPitch >>= 2;
-
-    for(unsigned y = 0; y < height; y++) {
-      memcpy(output + y * outputPitch, data + y * pitch, 4 * width);
-    }
-
-    if(system().information.overscan && config->video.maskOverscan.enable) {
-      unsigned h = config->video.maskOverscan.horizontal;
-      unsigned v = config->video.maskOverscan.vertical;
-
-      if(h) for(unsigned y = 0; y < height; y++) {
-        memset(output + y * outputPitch, 0, 4 * h);
-        memset(output + y * outputPitch + (width - h), 0, 4 * h);
-      }
-
-      if(v) for(unsigned y = 0; y < v; y++) {
-        memset(output + y * outputPitch, 0, 4 * width);
-        memset(output + (height - 1 - y) * outputPitch, 0, 4 * width);
-      }
-    }
-
-    video.unlock();
-    video.refresh();
-  }
-
-  static unsigned frameCounter = 0;
+  /*static unsigned frameCounter = 0;
   static time_t previous, current;
   frameCounter++;
 
@@ -145,7 +115,7 @@ void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned widt
     previous = current;
     utility->setStatusText({"FPS: ", frameCounter});
     frameCounter = 0;
-  }
+  } */
 }
 
 void Interface::audioSample(int16_t lsample, int16_t rsample) {
