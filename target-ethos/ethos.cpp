@@ -147,7 +147,6 @@ int main(int argc, char** argv) {
     .setTitle({"About ", Emulator::Name})
     .setText({
       Emulator::Name, " v", Emulator::Version, "\n",
-      Emulator::Profile, " Profile\n",
       "Author: ", Emulator::Author, "\n",
       "License: ", Emulator::License, "\n",
       "Website: ", Emulator::Website

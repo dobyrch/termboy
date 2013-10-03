@@ -3,10 +3,7 @@ name := higan
 processors := arm gsu hg51b lr35902 r6502 r65816 spc700 upd96050
 include processor/Makefile
 
-include fc/Makefile
-include sfc/Makefile
 include gb/Makefile
-include gba/Makefile
 
 ui_objects := ui-ethos ui-configuration ui-interface ui-utility
 ui_objects += ui-input ui-window ui-general ui-settings ui-tools

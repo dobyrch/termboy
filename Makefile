@@ -1,9 +1,6 @@
 include nall/Makefile
 
-fc  := fc
-sfc := sfc
 gb  := gb
-gba := gba
 
 profile := accuracy
 target  := ethos

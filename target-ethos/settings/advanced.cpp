@@ -18,7 +18,6 @@ AdvancedSettings::AdvancedSettings() {
   infoLabel.setFont(program->boldFont);
   infoLabel.setText({
     Emulator::Name, " v", Emulator::Version, "\n",
-    "  ", Emulator::Profile, " Profile\n",
     "  Author: ", Emulator::Author, "\n",
     "  License: ", Emulator::License, "\n",
     "  Website: ", Emulator::Website
