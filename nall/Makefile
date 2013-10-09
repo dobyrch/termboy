@@ -68,7 +68,6 @@ endif
 # function rwildcard(directory, pattern)
 #####
 rwildcard = \
-  $(strip \
     $(filter $(if $2,$2,%), \
       $(foreach f, \
         $(wildcard $1*), \
@@ -76,14 +75,12 @@ rwildcard = \
         $(if $t,$t,$f) \
       ) \
     ) \
-  )
 
 #####
 # function strtr(source, from, to)
 #####
 strtr = \
   $(eval __temp := $1) \
-  $(strip \
     $(foreach c, \
       $(join $(addsuffix :,$2),$3), \
       $(eval __temp := \
@@ -91,7 +88,6 @@ strtr = \
       ) \
     ) \
     $(__temp) \
-  )
 
 #####
 # function strupper(source)
@@ -109,7 +105,6 @@ strlower = $(call strtr,$1,$([A-Z]),$([a-z]))
 strlen = \
   $(eval __temp := $(subst $([space]),_,$1)) \
   $(words \
-    $(strip \
       $(foreach c, \
         $([all]), \
         $(eval __temp := \
@@ -118,7 +113,6 @@ strlen = \
       ) \
       $(__temp) \
     ) \
-  )
 
 #####
 # function streq(source)

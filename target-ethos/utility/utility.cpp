@@ -4,7 +4,7 @@ Utility* utility = nullptr;
 
 void Utility::setInterface(Emulator::Interface* emulator) {
   program->active = emulator;
-  presentation->synchronize();
+  //presentation->synchronize();
 }
 
 //load from command-line, etc
@@ -34,12 +34,13 @@ void Utility::loadMedia(string pathname) {
     }
   }
 
-  MessageWindow().setText("Unable to determine media type.").warning();
+  //MessageWindow().setText("Unable to determine media type.").warning();
 }
 
 //load menu option selected
 void Utility::loadMedia(Emulator::Interface* emulator, Emulator::Interface::Media& media) {
-  string pathname = browser->select({"Load ", media.name}, media.type);
+  //string pathname = browser->select({"Load ", media.name}, media.type);
+  string pathname = "~/ROMs/Tetris.gb";
   if(!directory::exists(pathname)) return;
   return loadMedia(emulator, media, pathname);
 }
@@ -55,14 +56,15 @@ void Utility::loadMedia(Emulator::Interface* emulator, Emulator::Interface::Medi
   system().load(media.id);
   system().power();
 
-  presentation->setSystemName(media.name);
-  presentation->setVisible();
+  //presentation->setSystemName(media.name);
+  //presentation->setVisible();
   load();
 }
 
 //request from emulation core to load non-volatile media folder
 void Utility::loadRequest(unsigned id, string name, string type) {
-  string pathname = browser->select({"Load ", name}, type);
+  //string pathname = browser->select({"Load ", name}, type);
+  string pathname = "~/ROMs/Tetris.gb";
   if(pathname.empty()) return;
   path(id) = pathname;
   this->pathname.append(pathname);
@@ -101,39 +103,39 @@ void Utility::reset() {
 }
 
 void Utility::load() {
-  presentation->setTitle(system().title());
+  //presentation->setTitle(system().title());
 
-  cheatEditor->load({pathname[0], "cheats.bml"});
-  stateManager->load({pathname[0], "bsnes/states.bsa"}, 1);
+  //cheatEditor->load({pathname[0], "cheats.bml"});
+  //stateManager->load({pathname[0], "bsnes/states.bsa"}, 1);
 
   system().paletteUpdate();
   synchronizeDSP();
 
   resize();
-  cheatEditor->synchronize();
-  cheatEditor->refresh();
+  //cheatEditor->synchronize();
+  //cheatEditor->refresh();
 }
 
 void Utility::unload() {
   if(program->active == nullptr) return;
   if(tracerEnable) tracerToggle();
 
-  cheatEditor->save({pathname[0], "cheats.bml"});
-  stateManager->save({pathname[0], "bsnes/states.bsa"}, 1);
+  //cheatEditor->save({pathname[0], "cheats.bml"});
+  //stateManager->save({pathname[0], "bsnes/states.bsa"}, 1);
 
   system().unload();
   path.reset();
   pathname.reset();
-  cheatEditor->reset();
-  stateManager->reset();
+  //cheatEditor->reset();
+  //stateManager->reset();
   setInterface(nullptr);
 
   video.clear();
   audio.clear();
-  presentation->setTitle({Emulator::Name, " v", Emulator::Version});
-  cheatDatabase->setVisible(false);
-  cheatEditor->setVisible(false);
-  stateManager->setVisible(false);
+  //presentation->setTitle({Emulator::Name, " v", Emulator::Version});
+  //cheatDatabase->setVisible(false);
+  //cheatEditor->setVisible(false);
+  //stateManager->setVisible(false);
 }
 
 void Utility::saveState(unsigned slot) {
@@ -209,7 +211,7 @@ void Utility::updateShader() {
 }
 
 void Utility::resize(bool resizeWindow) {
-  if(program->active == nullptr) {
+  /*if(program->active == nullptr) {
     auto geometry = presentation->geometry();
     presentation->viewport.setGeometry({0, 0, geometry.width, geometry.height});
     return;
@@ -254,11 +256,11 @@ void Utility::resize(bool resizeWindow) {
     presentation->viewport.setGeometry({0, 0, width, height});
   }
 
-  presentation->synchronize();
+  presentation->synchronize();*/
 }
 
 void Utility::toggleFullScreen() {
-  static Geometry geometry;
+  /*static Geometry geometry;
 
   if(presentation->fullScreen() == false) {
     geometry = presentation->geometry();
@@ -274,7 +276,7 @@ void Utility::toggleFullScreen() {
     presentation->setGeometry(geometry);
   }
 
-  resize();
+  resize();*/
 }
 
 void Utility::updateStatus() {
@@ -289,9 +291,9 @@ void Utility::updateStatus() {
   } else {
     text = statusText;
   }
-  if(text != presentation->statusText()) {
+  /*if(text != presentation->statusText()) {
     presentation->setStatusText(text);
-  }
+  }*/
 }
 
 void Utility::setStatusText(string text) {

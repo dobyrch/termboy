@@ -40,7 +40,7 @@ struct pVideoSDL {
   }
 
   void resize(unsigned width, unsigned height) {
-    if(iwidth >= width && iheight >= height) return;
+    /*if(iwidth >= width && iheight >= height) return;
 
     iwidth  = max(width,  iwidth);
     iheight = max(height, iheight);
@@ -49,7 +49,7 @@ struct pVideoSDL {
     buffer = SDL_CreateRGBSurface(
       SDL_SWSURFACE, iwidth, iheight, 32,
       0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000
-    );
+    );*/
   }
 
   bool lock(uint32_t*& data, unsigned& pitch, unsigned width, unsigned height) {
@@ -67,6 +67,7 @@ struct pVideoSDL {
   }
 
   void clear() {
+    /*
     if(SDL_MUSTLOCK(buffer)) SDL_LockSurface(buffer);
     for(unsigned y = 0; y < iheight; y++) {
       uint32_t* data = (uint32_t*)buffer->pixels + y * (buffer->pitch >> 2);
@@ -74,23 +75,25 @@ struct pVideoSDL {
     }
     if(SDL_MUSTLOCK(buffer)) SDL_UnlockSurface(buffer);
     refresh();
+    */
   }
 
   void refresh() {
-    //ruby input is X8R8G8B8, top 8-bits are ignored.
-    //as SDL forces us to use a 32-bit buffer, we must set alpha to 255 (full opacity)
-    //to prevent blending against the window beneath when X window visual is 32-bits.
-    if(SDL_MUSTLOCK(buffer)) SDL_LockSurface(buffer);
+    /*
+    //ruby input is x8r8g8b8, top 8-bits are ignored.
+    //as sdl forces us to use a 32-bit buffer, we must set alpha to 255 (full opacity)
+    //to prevent blending against the window beneath when x window visual is 32-bits.
+    if(sdl_mustlock(buffer)) sdl_locksurface(buffer);
     for(unsigned y = 0; y < settings.height; y++) {
       uint32_t *data = (uint32_t*)buffer->pixels + y * (buffer->pitch >> 2);
       for(unsigned x = 0; x < settings.width; x++) *data++ |= 0xff000000;
     }
-    if(SDL_MUSTLOCK(buffer)) SDL_UnlockSurface(buffer);
+    if(sdl_mustlock(buffer)) sdl_unlocksurface(buffer);
 
-    XWindowAttributes attributes;
-    XGetWindowAttributes(display, settings.handle, &attributes);
+    xwindowattributes attributes;
+    xgetwindowattributes(display, settings.handle, &attributes);
 
-    SDL_Rect src, dest;
+    sdl_rect src, dest;
 
     src.x = 0;
     src.y = 0;
@@ -102,8 +105,9 @@ struct pVideoSDL {
     dest.w = attributes.width;
     dest.h = attributes.height;
 
-    SDL_SoftStretch(buffer, &src, screen, &dest);
-    SDL_UpdateRect(screen, dest.x, dest.y, dest.w, dest.h);
+    sdl_softstretch(buffer, &src, screen, &dest);
+    sdl_updaterect(screen, dest.x, dest.y, dest.w, dest.h);
+    */
   }
 
   bool init() {

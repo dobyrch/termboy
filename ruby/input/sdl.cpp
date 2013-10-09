@@ -207,6 +207,7 @@ struct pInputSDL {
   }
 
   void term() {
+    /*
     unacquire();
     XFreeCursor(device.display, device.InvisibleCursor);
 
@@ -217,6 +218,7 @@ struct pInputSDL {
 
     SDL_QuitSubSystem(SDL_INIT_JOYSTICK);
     XCloseDisplay(device.display);
+    */
   }
 
   pInputSDL() {
@@ -225,6 +227,4 @@ struct pInputSDL {
   }
 };
 
-DeclareInput(SDL)
-
-};
+DeclareInput(SDL) };

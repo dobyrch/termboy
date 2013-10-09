@@ -11,7 +11,8 @@ Emulator::Interface& system() {
 }
 
 bool Program::focused() {
-  return config->input.focus.allow || presentation->focused();
+  //return config->input.focus.allow || presentation->focused();
+  return true;
 }
 
 string Program::path(string name) {
@@ -27,13 +28,14 @@ string Program::path(string name) {
 void Program::main() {
   inputManager->poll();
   utility->updateStatus();
-  autopause = config->input.focus.pause && presentation->focused() == false;
+  //autopause = config->input.focus.pause && presentation->focused() == false;
+  autopause = false;
 
-  if(active == nullptr || system().loaded() == false || pause || autopause) {
+  /*if(active == nullptr || system().loaded() == false || pause || autopause) {
     audio.clear();
     usleep(20 * 1000);
     return;
-  }
+  }*/
 
   system().run();
 }
@@ -53,7 +55,7 @@ Program::Program(int argc, char** argv) {
   bootstrap();
   active = nullptr;
 
-  if(Intrinsics::platform() == Intrinsics::Platform::OSX) {
+  /*if(Intrinsics::platform() == Intrinsics::Platform::OSX) {
     normalFont = Font::sans(12);
     boldFont = Font::sans(12, "Bold");
     titleFont = Font::sans(20, "Bold");
@@ -63,7 +65,7 @@ Program::Program(int argc, char** argv) {
     boldFont = Font::sans(8, "Bold");
     titleFont = Font::sans(16, "Bold");
     monospaceFont = Font::monospace(8);
-  }
+  }*/
 
   config = new ConfigurationSettings;
   video.driver(config->video.driver);
@@ -72,36 +74,24 @@ Program::Program(int argc, char** argv) {
 
   utility = new Utility;
   inputManager = new InputManager;
-  windowManager = new WindowManager;
-  browser = new Browser;
-  presentation = new Presentation;
-  dipSwitches = new DipSwitches;
-  videoSettings = new VideoSettings;
-  audioSettings = new AudioSettings;
-  inputSettings = new InputSettings;
-  hotkeySettings = new HotkeySettings;
-  timingSettings = new TimingSettings;
-  serverSettings = new ServerSettings;
-  advancedSettings = new AdvancedSettings;
-  settings = new Settings;
-  cheatDatabase = new CheatDatabase;
-  cheatEditor = new CheatEditor;
-  stateManager = new StateManager;
-  windowManager->loadGeometry();
-  presentation->setVisible();
+  //presentation->setVisible();
+
   utility->resize();
 
-  video.set(Video::Handle, presentation->viewport.handle());
-  if(!video.cap(Video::Depth) || !video.set(Video::Depth, depth = 30u)) {
-    video.set(Video::Depth, depth = 24u);
-  }
-  if(video.init() == false) { video.driver("None"); video.init(); }
+  //video.set(Video::Handle, presentation->viewport.handle());
+  //video.set(Video::Handle, 0);
+  //if(!video.cap(Video::Depth) || !video.set(Video::Depth, depth = 30u)) {
+  //  video.set(Video::Depth, depth = 24u);
+  //}
+  //if(video.init() == false) { video.driver("None"); video.init(); }
 
-  audio.set(Audio::Handle, presentation->viewport.handle());
-  if(audio.init() == false) { audio.driver("None"); audio.init(); }
+  //audio.set(Audio::Handle, presentation->viewport.handle());
+  //audio.set(Audio::Handle, 0);
+  //if(audio.init() == false) { audio.driver("None"); audio.init(); }
 
-  input.set(Input::Handle, presentation->viewport.handle());
-  if(input.init() == false) { input.driver("None"); input.init(); }
+  //input.set(Input::Handle, presentation->viewport.handle());
+  //input.set(Input::Handle, 0);
+  //if(input.init() == false) { input.driver("None"); input.init(); }
 
   dspaudio.setPrecision(16);
   dspaudio.setBalance(0.0);
@@ -111,18 +101,22 @@ Program::Program(int argc, char** argv) {
   utility->updateShader();
 
   if(config->video.startFullScreen && argc >= 2) utility->toggleFullScreen();
-  Application::processEvents();
+  //Application::processEvents();
 
   if(argc >= 2) utility->loadMedia(argv[1]);
 
-  Application::main = {&Program::main, this};
-  Application::run();
+  //Application::main = {&Program::main, this};
+  //Application::run();
+
+  while(true) {
+    main();
+  }
 
   utility->unload();
   config->save();
-  browser->saveConfiguration();
-  inputManager->saveConfiguration();
-  windowManager->saveGeometry();
+  //browser->saveConfiguration();
+  //inputManager->saveConfiguration();
+  //windowManager->saveGeometry();
 
   ananke.close();
 }
@@ -132,17 +126,17 @@ int main(int argc, char** argv) {
   utf8_args(argc, argv);
   #endif
 
-  Application::setName("higan");
+  //Application::setName("higan");
 
-  Application::Windows::onModalBegin = [&] {
+  //Application::Windows::onModalBegin = [&] {
     audio.clear();
-  };
+  //};
 
-  Application::Cocoa::onActivate = [&] {
-    presentation->setVisible();
-  };
+  //Application::Cocoa::onActivate = [&] {
+  //  presentation->setVisible();
+  //};
 
-  Application::Cocoa::onAbout = [&] {
+  /*Application::Cocoa::onAbout = [&] {
     MessageWindow()
     .setTitle({"About ", Emulator::Name})
     .setText({
@@ -152,16 +146,16 @@ int main(int argc, char** argv) {
       "Website: ", Emulator::Website
     })
     .information();
-  };
+  };*/
 
-  Application::Cocoa::onPreferences = [&] {
+  /*Application::Cocoa::onPreferences = [&] {
     settings->setVisible();
     settings->panelList.setFocused();
-  };
+  };*/
 
-  Application::Cocoa::onQuit = [&] {
+  /*Application::Cocoa::onQuit = [&] {
     Application::quit();
-  };
+  };*/
 
   new Program(argc, argv);
   delete program;

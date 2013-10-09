@@ -10,8 +10,9 @@ target  := ethos
 # console := true
 
 # compiler
-flags   += -I. -O3 -fomit-frame-pointer 
-link    += -lncursesw
+#flags   += -I. -O0 -fomit-frame-pointer 
+flags   += -I. -ggdb -O3
+link    += -lncursesw -g
 objects := libco
 
 # profile-guided optimization mode
@@ -28,7 +29,7 @@ endif
 # platform
 ifeq ($(platform),x)
   flags += -march=native
-  link += -s -Wl,-export-dynamic -ldl -lX11 -lXext
+  link += -Wl,-export-dynamic -ldl -lX11 -lXext
 else ifeq ($(platform),osx)
   flags += -march=native
 else ifeq ($(platform),win)
@@ -41,7 +42,7 @@ else ifeq ($(platform),win)
   else
     link += -mwindows
   endif
-  link += -s -mthreads -luuid -lkernel32 -luser32 -lgdi32 -lcomctl32 -lcomdlg32 -lshell32 -lole32 -lws2_32
+  link += -mthreads -luuid -lkernel32 -luser32 -lgdi32 -lcomctl32 -lcomdlg32 -lshell32 -lole32 -lws2_32
   link += -Wl,-enable-auto-import -Wl,-enable-runtime-pseudo-reloc
 else
   $(error unsupported platform.)
@@ -51,14 +52,12 @@ ui := target-$(target)
 
 # implicit rules
 compile = \
-  $(strip \
     $(if $(filter %.c,$<), \
       $(compiler) $(cflags) $(flags) $1 -c $< -o $@, \
       $(if $(filter %.cpp,$<), \
         $(compiler) $(cppflags) $(flags) $1 -c $< -o $@ \
       ) \
     ) \
-  )
 
 %.o: $<; $(call compile)
 
@@ -82,7 +81,6 @@ clean:
 archive:
 	if [ -f higan.tar.xz ]; then rm higan.tar.xz; fi
 	tar -cJf higan.tar.xz `ls`
-
 sync:
 ifeq ($(shell id -un),byuu)
 	if [ -d ./libco ]; then rm -r ./libco; fi

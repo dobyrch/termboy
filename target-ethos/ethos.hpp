@@ -13,9 +13,6 @@
 #include <nall/stream/vector.hpp>
 using namespace nall;
 
-#include <phoenix/phoenix.hpp>
-using namespace phoenix;
-
 #include <ruby/ruby.hpp>
 using namespace ruby;
 
@@ -23,10 +20,6 @@ using namespace ruby;
 #include "interface/interface.hpp"
 #include "utility/utility.hpp"
 #include "input/input.hpp"
-#include "window/window.hpp"
-#include "general/general.hpp"
-#include "settings/settings.hpp"
-#include "tools/tools.hpp"
 #include "resource/resource.hpp"
 
 Emulator::Interface& system();

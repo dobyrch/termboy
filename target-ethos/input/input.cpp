@@ -166,7 +166,7 @@ int16_t AbsoluteInput::poll() {
   if(program->focused() == false) return -32768;
   int16_t result = -32768;  //offscreen value
 
-  using nall::Mouse;
+  /*using nall::Mouse;
 
   Position position = phoenix::Mouse::position();
   Geometry geometry = presentation->geometry();
@@ -204,7 +204,7 @@ int16_t AbsoluteInput::poll() {
     if(item.scancode == mouse(0)[Mouse::Yaxis]) {
       result = position.y;
     }
-  }
+  }*/
 
   return result;
 }
@@ -226,19 +226,20 @@ void InputManager::bind() {
 void InputManager::poll() {
   using nall::Keyboard;
 
-  activeScancode = !activeScancode;
-  if(input.poll(scancode[activeScancode]) == false) return;
+  //activeScancode = !activeScancode;
+  //if(input.poll(scancode[activeScancode]) == false) return;
 
-  for(unsigned n = 0; n < Scancode::Limit; n++) {
+  /*for(unsigned n = 0; n < Scancode::Limit; n++) {
     if(scancode[0][n] != scancode[1][n]) {
       if(settings->focused()) {
         inputSettings->inputEvent(n, scancode[activeScancode][n]);
         hotkeySettings->inputEvent(n, scancode[activeScancode][n]);
       }
     }
-  }
+  }*/
 
-  if(presentation->focused()) pollHotkeys();
+  //if(presentation->focused()) pollHotkeys();
+  pollHotkeys();
 }
 
 //Called by DigitalInput::poll

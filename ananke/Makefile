@@ -1,8 +1,7 @@
 include ../nall/Makefile
-include ../phoenix/Makefile
 
 path := /usr/local/lib
-flags := $(flags) -O3 -fomit-frame-pointer -I..
+flags := $(flags) -O0 -g -I..
 
 all:
 	$(compiler) $(cppflags) $(flags) -fPIC -o obj/ananke.o -c ananke.cpp

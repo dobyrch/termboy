@@ -115,7 +115,7 @@ void InputManager::appendHotkeys() {
     hotkey->mapping = "None";
 
     hotkey->press = [] {
-      Application::quit();
+      //Application::quit();
     };
   }
 

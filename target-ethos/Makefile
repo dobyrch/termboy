@@ -6,8 +6,8 @@ include processor/Makefile
 include gb/Makefile
 
 ui_objects := ui-ethos ui-configuration ui-interface ui-utility
-ui_objects += ui-input ui-window ui-general ui-settings ui-tools
-ui_objects += phoenix ruby
+ui_objects += ui-input
+ui_objects += ruby
 ui_objects += $(if $(call streq,$(platform),win),resource)
 
 # platform
@@ -25,10 +25,6 @@ else ifeq ($(platform),win)
   ruby += input.rawinput input.directinput
 endif
 
-# phoenix
-include phoenix/Makefile
-link += $(phoenixlink)
-
 # ruby
 include ruby/Makefile
 link += $(rubylink)
@@ -42,16 +38,9 @@ obj/ui-configuration.o: $(ui)/configuration/configuration.cpp $(call rwildcard,$
 obj/ui-interface.o: $(ui)/interface/interface.cpp $(call rwildcard,$(ui)/)
 obj/ui-utility.o: $(ui)/utility/utility.cpp $(call rwildcard,$(ui)/)
 obj/ui-input.o: $(ui)/input/input.cpp $(call rwildcard,$(ui)/)
-obj/ui-window.o: $(ui)/window/window.cpp $(call rwildcard,$(ui)/)
-obj/ui-general.o: $(ui)/general/general.cpp $(call rwildcard,$(ui)/)
-obj/ui-settings.o: $(ui)/settings/settings.cpp $(call rwildcard,$(ui)/)
-obj/ui-tools.o: $(ui)/tools/tools.cpp $(call rwildcard,$(ui)/)
 
 obj/ruby.o: ruby/ruby.cpp $(call rwildcard,ruby/*)
 	$(compiler) $(rubyflags) -c $< -o $@
-
-obj/phoenix.o: phoenix/phoenix.cpp $(call rwildcard,phoenix/*)
-	$(compiler) $(phoenixflags) -c $< -o $@
 
 obj/resource.o: $(ui)/resource.rc
 ifeq ($(arch),win32)
@@ -63,7 +52,7 @@ endif
 # targets
 build: $(objects)
 ifeq ($(platform),x)
-	$(strip $(compiler) -o out/$(name) $(objects) $(link))
+	$(compiler) -o out/$(name) $(objects) $(link)
 else ifeq ($(platform),osx)
 	if [ -d out/$(name).app ]; then rm -r out/$(name).app; fi
 	mkdir out/$(name).app
@@ -72,10 +61,7 @@ else ifeq ($(platform),osx)
 	mkdir out/$(name).app/Contents/Resources
 	cp data/Info.plist out/$(name).app/Contents/Info.plist
 	sips -s format icns data/higan512.png --out out/$(name).app/Contents/Resources/higan.icns
-	$(strip $(compiler) -o out/$(name).app/Contents/MacOS/$(name) $(objects) $(link))
-else ifeq ($(platform),win)
-	$(strip $(compiler) -shared -o out/phoenix.dll obj/phoenix.o $(phoenixlink))
-	$(strip $(compiler) -o out/$(name) $(subst obj/phoenix.o,,$(objects)) $(link) -Lout -lphoenix)
+	$(compiler) -o out/$(name).app/Contents/MacOS/$(name) $(objects) $(link)
 endif
 
 resource:

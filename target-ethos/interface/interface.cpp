@@ -44,7 +44,8 @@ uint32_t Interface::videoColor(unsigned source, uint16_t r, uint16_t g, uint16_t
     return r << 20 | g << 10 | b << 0;
   }
 
-  if(program->depth == 24) {
+  //TODO: find where color depth gets set
+  if(program->depth == 0) {
     r >>= 8, g >>= 8, b >>= 8;
     return r << 16 | g << 8 | b << 0;
   }
@@ -57,7 +58,8 @@ void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned widt
   static int red = 1;
   static int green = 2;
   static int yellow = 3;
-  int cpair;
+
+  int cpair = 0;
 
   //Unicode LEFT HALF BLOCK
   wchar_t block[] = {L'\u258c', L'\0'};
@@ -133,7 +135,8 @@ int16_t Interface::inputPoll(unsigned port, unsigned device, unsigned input) {
 }
 
 unsigned Interface::dipSettings(const Markup::Node& node) {
-  return dipSwitches->run(node);
+  //return dipSwitches->run(node);
+  return 0;
 }
 
 string Interface::path(unsigned group) {
@@ -149,5 +152,5 @@ string Interface::server() {
 }
 
 void Interface::notify(string text) {
-  MessageWindow().setParent(*presentation).setText(text).information();
+  //MessageWindow().setParent(*presentation).setText(text).information();
 }

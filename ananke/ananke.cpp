@@ -1,13 +1,7 @@
 #include <nall/nall.hpp>
 #include <nall/beat/patch.hpp>
-#include "heuristics/famicom.hpp"
-#include "heuristics/super-famicom.hpp"
 #include "heuristics/game-boy.hpp"
-#include "heuristics/game-boy-advance.hpp"
 using namespace nall;
-
-#include <phoenix/phoenix.hpp>
-using namespace phoenix;
 
 namespace Database {
   #include "database/super-famicom.hpp"
@@ -35,44 +29,11 @@ struct Ananke {
   //patch.cpp
   void applyBeatPatch(vector<uint8_t> &buffer);
 
-  //famicom.cpp
-  void copyFamicomSaves(const string &pathname);
-  string createFamicomHeuristic(vector<uint8_t> &buffer);
-  string openFamicom(vector<uint8_t> &buffer);
-  string syncFamicom(const string &pathname);
-
-  //super-famicom.cpp
-  void copySuperFamicomSaves(const string &pathname);
-  string createSuperFamicomDatabase(vector<uint8_t> &buffer, Markup::Node &document, const string &manifest);
-  string createSuperFamicomHeuristic(vector<uint8_t> &buffer);
-  void createSuperFamicomHeuristicFirmware(vector<uint8_t> &buffer, const string &pathname, bool firmware_appended);
-  string openSuperFamicom(vector<uint8_t> &buffer);
-  string syncSuperFamicom(const string &pathname);
-
-  //sufami-turbo.cpp
-  void copySufamiTurboSaves(const string &pathname);
-  string createSufamiTurboDatabase(vector<uint8_t> &buffer, Markup::Node &document, const string &manifest);
-  string createSufamiTurboHeuristic(vector<uint8_t> &buffer);
-  string openSufamiTurbo(vector<uint8_t> &buffer);
-  string syncSufamiTurbo(const string &pathname);
-
-  //bsx-satellaview.cpp
-  string createBsxSatellaviewDatabase(vector<uint8_t> &buffer, Markup::Node &document, const string &manifest);
-  string createBsxSatellaviewHeuristic(vector<uint8_t> &buffer);
-  string openBsxSatellaview(vector<uint8_t> &buffer);
-  string syncBsxSatellaview(const string &pathname);
-
   //game-boy.cpp
   void copyGameBoySaves(const string &pathname);
   string createGameBoyHeuristic(vector<uint8_t> &buffer);
   string openGameBoy(vector<uint8_t> &buffer);
   string syncGameBoy(const string &pathname);
-
-  //game-boy-advance.cpp
-  void copyGameBoyAdvanceSaves(const string &pathname);
-  string createGameBoyAdvanceHeuristic(vector<uint8_t> &buffer);
-  string openGameBoyAdvance(vector<uint8_t> &buffer);
-  string syncGameBoyAdvance(const string &pathname);
 
   static bool supported(const string &filename);
   string open(string filename = "");
@@ -80,17 +41,11 @@ struct Ananke {
 };
 
 #include "resource/resource.cpp"
-#include "file-dialog.cpp"
 #include "archive.cpp"
 #include "patch.cpp"
-#include "famicom.cpp"
-#include "super-famicom.cpp"
-#include "sufami-turbo.cpp"
-#include "bsx-satellaview.cpp"
 #include "game-boy.cpp"
-#include "game-boy-advance.cpp"
 
-FileDialog *fileDialog = nullptr;
+//FileDialog *fileDialog = nullptr;
 
 Ananke::Ananke() {
   libraryPath = string::read({configpath(), "higan/library.bml"}).strip().ltrim<1>("Path: ").replace("\\", "/");
@@ -116,7 +71,7 @@ bool Ananke::supported(const string &filename) {
 }
 
 string Ananke::open(string filename) {
-  if(filename.empty()) {
+  /*if(filename.empty()) {
     if(!fileDialog) {
       fileDialog = new FileDialog;
       fileDialog->setGeometry(config.geometry);
@@ -124,7 +79,7 @@ string Ananke::open(string filename) {
     fileDialog->setPath(config.path);
     filename = fileDialog->open();
     config.geometry = fileDialog->geometry().text();
-  }
+  }*/
 
   if(filename.empty()) return "";
 
@@ -143,23 +98,13 @@ string Ananke::open(string filename) {
 
   applyBeatPatch(buffer);
 
-  if(information.name.endswith(".fc") || information.name.endswith(".nes")) return openFamicom(buffer);
-  if(information.name.endswith(".sfc") || information.name.endswith(".smc")) return openSuperFamicom(buffer);
-  if(information.name.endswith(".st")) return openSufamiTurbo(buffer);
-  if(information.name.endswith(".bs")) return openBsxSatellaview(buffer);
   if(information.name.endswith(".gb") || information.name.endswith(".gbc")) return openGameBoy(buffer);
-  if(information.name.endswith(".gba")) return openGameBoyAdvance(buffer);
   return "";
 }
 
 string Ananke::sync(string pathname) {
-  if(pathname.endswith(".fc/")) return syncFamicom(pathname);
-  if(pathname.endswith(".sfc/")) return syncSuperFamicom(pathname);
-  if(pathname.endswith(".st/")) return syncSufamiTurbo(pathname);
-  if(pathname.endswith(".bs/")) return syncBsxSatellaview(pathname);
   if(pathname.endswith(".gb/")) return syncGameBoy(pathname);
   if(pathname.endswith(".gbc/")) return syncGameBoy(pathname);
-  if(pathname.endswith(".gba/")) return syncGameBoyAdvance(pathname);
   return "";
 }
 
