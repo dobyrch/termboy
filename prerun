@@ -1,4 +1,6 @@
+#!/bin/sh
 #!/usr/bin/sh
+
 echo -en '\e]P7052505' # White (so cursor isn't visible)
 echo -en '\e]P0052505' # Black
 echo -en '\e]P11d551d' # Red
@@ -9,4 +11,5 @@ setterm -repeat on
 #set repeat rate (what's the default?)
 kdbrate -d 250
 
+#Specify font in case no default set
 setfont -h4

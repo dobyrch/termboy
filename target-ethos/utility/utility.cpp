@@ -40,6 +40,7 @@ void Utility::loadMedia(string pathname) {
 //load menu option selected
 void Utility::loadMedia(Emulator::Interface* emulator, Emulator::Interface::Media& media) {
   //string pathname = browser->select({"Load ", media.name}, media.type);
+  //TODO:  remove this... why does it work anyway?
   string pathname = "~/ROMs/Tetris.gb";
   if(!directory::exists(pathname)) return;
   return loadMedia(emulator, media, pathname);
