@@ -244,6 +244,7 @@ void InputManager::poll() {
 
 //Called by DigitalInput::poll
 int16_t InputManager::poll(unsigned scancode) {
+  //TODO: Remove this junk.  This method should never be called.
   //char buff[20]; 
 
   /*if (this->scancode[activeScancode][scancode] != 0) {
@@ -251,12 +252,12 @@ int16_t InputManager::poll(unsigned scancode) {
     addstr(buff);
   }*/
 
-  int ch = getch();
+  /*int ch = getch();
 
   if (ch != ERR) {
     //sprintf(buff, "getch: %d\n", ch);
     //addstr(buff);
-    
+
     switch (ch) {
       case 'A':  this->scancode[activeScancode][89] = 1; break;
       case 'B':  this->scancode[activeScancode][90] = 1; break;
@@ -264,10 +265,10 @@ int16_t InputManager::poll(unsigned scancode) {
       case 'D':  this->scancode[activeScancode][91] = 1; break;
       case 'z':  this->scancode[activeScancode][62] = 1; break;
       case 'x':  this->scancode[activeScancode][60] = 1; break;
-      case 10:  this->scancode[activeScancode][94] = 1; break;
+      case  10:  this->scancode[activeScancode][94] = 1; break;
       case 127:  this->scancode[activeScancode][30] = 1; break;
     }
-  }
+  }*/
 
   return this->scancode[activeScancode][scancode];
 }

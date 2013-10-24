@@ -1,4 +1,6 @@
 #ifdef CPU_CPP
+#include <ncursesw/curses.h>
+#include <sys/time.h>
 
 unsigned CPU::wram_addr(uint16 addr) const {
   addr &= 0x1fff;
@@ -8,17 +10,65 @@ unsigned CPU::wram_addr(uint16 addr) const {
 }
 
 void CPU::mmio_joyp_poll() {
-  unsigned button = 0, dpad = 0;
+  static unsigned button = 0;
+  static unsigned dpad = 0;
+  static time_t prev_sec = 0;
+  static suseconds_t prev_usec = 0;
 
-  button |= interface->inputPoll(0, 0, (unsigned)Input::Start) << 3;
-  button |= interface->inputPoll(0, 0, (unsigned)Input::Select) << 2;
-  button |= interface->inputPoll(0, 0, (unsigned)Input::B) << 1;
-  button |= interface->inputPoll(0, 0, (unsigned)Input::A) << 0;
+  struct timeval tv;
+  int ch;
 
-  dpad |= interface->inputPoll(0, 0, (unsigned)Input::Down) << 3;
-  dpad |= interface->inputPoll(0, 0, (unsigned)Input::Up) << 2;
-  dpad |= interface->inputPoll(0, 0, (unsigned)Input::Left) << 1;
-  dpad |= interface->inputPoll(0, 0, (unsigned)Input::Right) << 0;
+  gettimeofday(&tv, NULL);
+  ch = getch();
+
+  if (ch != ERR) {
+    if (tv.tv_sec - prev_sec > 0L || tv.tv_usec - prev_usec > 16666L) {
+      prev_sec = tv.tv_sec;
+      prev_usec = tv.tv_usec;
+
+      switch(ch) {
+      case 'd':
+        dpad = 1 << 0;
+        break;
+      case 'a':
+        dpad = 1 << 1;
+        break;
+      case 'w':
+        dpad = 1 << 2;
+        break;
+      case 's':
+        dpad = 1 << 3;
+        break;
+      case 'j':
+        button = 1 << 0;
+        break;
+      case 'k':
+        button = 1 << 1;
+        break;
+      case ' ':
+        button = 1 << 2;
+        break;
+      case 10:
+        button = 1 << 3;
+        break;
+      }
+    }
+  } else if (tv.tv_sec - prev_sec > 0L || tv.tv_usec - prev_usec > 33333L) {
+    button = 0;
+    dpad = 0;
+  }
+
+  /*
+  interface->inputPoll(0, 0, (unsigned)Input::Start) << 3;
+  interface->inputPoll(0, 0, (unsigned)Input::Select) << 2;
+  interface->inputPoll(0, 0, (unsigned)Input::B) << 1;
+  interface->inputPoll(0, 0, (unsigned)Input::A) << 0;
+
+  interface->inputPoll(0, 0, (unsigned)Input::Down) << 3;
+  interface->inputPoll(0, 0, (unsigned)Input::Up) << 2;
+  interface->inputPoll(0, 0, (unsigned)Input::Left) << 1;
+  interface->inputPoll(0, 0, (unsigned)Input::Right) << 0;
+  */
 
   status.joyp = 0x0f;
   if(status.p15 == 1 && status.p14 == 1) status.joyp -= status.mlt_req;

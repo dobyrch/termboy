@@ -1,0 +1,39 @@
+#!/bin/sh
+#!/usr/bin/sh
+
+echo -en '\e]P7052505' # White (so cursor isn't visible)
+echo -en '\e]P0052505' # Black
+echo -en '\e]P11d551d' # Red
+echo -en '\e]P28bac05' # Green
+echo -en '\e]P39abb05' # Yellow
+
+#setterm -repeat on
+#set repeat rate (what's the default?)
+#kdbrate -d 250
+
+#Specify font in case no default set
+setfont -h4
+
+out/higan $1
+
+setfont
+
+echo -en "\e]P0073642" # Black
+echo -en "\e]P1dc322f" # Red
+echo -en "\e]P2859900" # Green
+echo -en "\e]P3b58900" # Yellow
+echo -en "\e]P4268bd2" # Blue
+echo -en "\e]P5d33682" # Magenta
+echo -en "\e]P62aa198" # Cyan
+echo -en "\e]P7eee8d5" # White
+echo -en "\e]P8002b36" # Bright Black
+echo -en "\e]P9cb4b16" # Bright Red
+echo -en "\e]PA586e75" # Bright Green
+echo -en "\e]PB657b83" # Bright Yellow
+echo -en "\e]PC839496" # Bright Blue
+echo -en "\e]PD6c71c4" # Bright Magenta
+echo -en "\e]PE93a1a1" # Bright Cyan
+echo -en "\e]PFfdf6e3" # Bright White
+stty sane
+
+clear

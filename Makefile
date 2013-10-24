@@ -10,8 +10,8 @@ target  := ethos
 # console := true
 
 # compiler
-#flags   += -I. -O3 -fomit-frame-pointer 
-flags   += -I. -ggdb -O0
+flags   += -I. -O3 -fomit-frame-pointer 
+#flags   += -I. -ggdb -O0
 link    += -lncursesw -g
 objects := libco
 
