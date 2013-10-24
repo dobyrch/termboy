@@ -60,7 +60,7 @@ public:
     ao_info *di = ao_driver_info(driver_id);
     if(!di) return false;
     if(!strcmp(di->short_name, "alsa")) {
-      ao_append_option(&options, "buffer_time", "100000"); //100ms latency (default was 500ms)
+      //ao_append_option(&options, "buffer_time", "100000"); //100ms latency (default was 500ms)
     }
 
     audio_device = ao_open_live(driver_id, &driver_format, options);

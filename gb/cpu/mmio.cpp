@@ -53,7 +53,7 @@ void CPU::mmio_joyp_poll() {
         break;
       }
     }
-  } else if (tv.tv_sec - prev_sec > 0L || tv.tv_usec - prev_usec > 33333L) {
+  } else if (tv.tv_sec - prev_sec > 0L || tv.tv_usec - prev_usec > 99999L) {
     button = 0;
     dpad = 0;
   }

@@ -69,7 +69,7 @@ Program::Program(int argc, char** argv) {
 
   config = new ConfigurationSettings;
   video.driver(config->video.driver);
-  audio.driver(config->audio.driver);
+  audio.driver("ALSA");
   input.driver(config->input.driver);
 
   utility = new Utility;
@@ -87,7 +87,7 @@ Program::Program(int argc, char** argv) {
 
   //audio.set(Audio::Handle, presentation->viewport.handle());
   //audio.set(Audio::Handle, 0);
-  //if(audio.init() == false) { audio.driver("None"); audio.init(); }
+  if(audio.init() == false) { audio.driver("None"); audio.init(); }
 
   //input.set(Input::Handle, presentation->viewport.handle());
   //input.set(Input::Handle, 0);
