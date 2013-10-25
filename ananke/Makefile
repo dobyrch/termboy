@@ -27,6 +27,7 @@ ifeq ($(platform),x)
 	if [ ! -d ~/.config/ananke ]; then mkdir ~/.config/ananke; fi
 	sudo cp libananke.so $(path)/libananke.so.1
 	sudo ln -s $(path)/libananke.so.1 $(path)/libananke.so
+	sudo chmod 777 $(path)/libananke.so*
 else ifeq ($(platform),osx)
 	if [ ! -d ~/Library/Application\ Support/ananke ]; then mkdir ~/Library/Application\ Support/ananke; fi
 	sudo cp libananke.dylib $(path)/libananke.1.dylib

@@ -1,6 +1,9 @@
+#include <signal.h>
+#include <stdlib.h>
 #include "ethos.hpp"
 #include "bootstrap.cpp"
 #include "resource/resource.cpp"
+#include "../ananke/ananke.cpp"
 
 Program* program = nullptr;
 DSP dspaudio;
@@ -107,7 +110,8 @@ Program::Program(int argc, char** argv) {
 
   //Application::main = {&Program::main, this};
   //Application::run();
-
+  Ananke ank;
+  ank.sync("/home/dobyrch/ROMs/Game Boy/pokemon_blue.gb");
   while(true) {
     main();
   }
@@ -121,11 +125,19 @@ Program::Program(int argc, char** argv) {
   ananke.close();
 }
 
+//Come up with a solution that is guaranteed to work when 
+//multiple threads are running
+void sighandler(int sig) {
+  utility->unload();
+  exit(EXIT_SUCCESS);
+}
+
 int main(int argc, char** argv) {
   #if defined(PLATFORM_WINDOWS)
   utf8_args(argc, argv);
   #endif
 
+  signal(SIGINT, sighandler);
   //Application::setName("higan");
 
   //Application::Windows::onModalBegin = [&] {

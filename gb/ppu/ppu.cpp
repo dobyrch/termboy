@@ -161,7 +161,7 @@ PPU::PPU() {
     //halfdelay(10);
     timeout(0);
     //clear();
-    //noecho();
+    noecho();
     //cbreak();
     start_color();
     //Can use color pairs between 0 and COLOR_PAIRS-1 (COLOR_PAIRS=64 on my machine

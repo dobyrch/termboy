@@ -239,7 +239,7 @@ void InputManager::poll() {
   }*/
 
   //if(presentation->focused()) pollHotkeys();
-  pollHotkeys();
+  //pollHotkeys();
 }
 
 //Called by DigitalInput::poll

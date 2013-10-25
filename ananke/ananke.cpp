@@ -40,7 +40,7 @@ struct Ananke {
   string sync(string pathname);
 };
 
-#include "resource/resource.cpp"
+//#include "resource/resource.cpp"
 #include "archive.cpp"
 #include "patch.cpp"
 #include "game-boy.cpp"
