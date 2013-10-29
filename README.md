@@ -36,3 +36,5 @@ TODO
 * GB Color support
 * Remove unused libraries
 * Continue deleting unused code
+* Remove configuration files
+* Check for boot.rom
