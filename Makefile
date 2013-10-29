@@ -29,7 +29,7 @@ endif
 # platform
 ifeq ($(platform),x)
   flags += -march=native
-  link += -Wl,-export-dynamic -ldl -lX11 -lXext
+  link += -Wl,-export-dynamic -ldl #-lX11 -lXext
 else ifeq ($(platform),osx)
   flags += -march=native
 else ifeq ($(platform),win)
