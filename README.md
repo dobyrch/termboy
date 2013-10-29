@@ -7,6 +7,7 @@ Compiling
 ---------
 Required Tools:
 * g++ (>4.7)
+
 Required Libraries:
 * ncurses
 * X11
