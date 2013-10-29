@@ -28,6 +28,7 @@ The Makefile automatically installs libananke.so.  The Makefiles should be rewri
 
 TODO
 ----
+* Keyboard input fix (multipress & key up/down events)
 * Center display on screen
 * Restore terminal settings after exit
 * Accept parameters in run script; handle bad input
