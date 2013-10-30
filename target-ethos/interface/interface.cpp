@@ -58,8 +58,11 @@ void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned widt
   static int red = 1;
   static int green = 2;
   static int yellow = 3;
-
+  int ymax, xmax, yout, xout;
   int cpair = 0;
+
+  getmaxyx(program->window, ymax, xmax);
+
 
   //Unicode LEFT HALF BLOCK
   wchar_t block[] = {L'\u258c', L'\0'};
@@ -100,8 +103,16 @@ void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned widt
 
         cpair += 1;
 
+        yout = y;
+        xout = x/2;
+
+        if (height < ymax)
+          yout += (ymax - height)/2;
+        if (width < xmax)
+          xout += xmax - width;
+
         attron(COLOR_PAIR(cpair));
-        mvaddwstr(y, x/2, block);
+        mvaddwstr(yout, xout, block);
         attroff(COLOR_PAIR(cpair));
     }
   }

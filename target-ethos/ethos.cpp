@@ -25,11 +25,8 @@ string Program::path(string name) {
 
 void Program::init_curses() {
   setlocale(LC_ALL, "");
-  WINDOW *main = initscr();
-  int ymax, xmax;
-  getmaxyx(main, ymax, xmax);
-  //TODO:  Don't hardcode dimensions
-  window = subwin(main, 144, 160, (ymax - 144)/2, (xmax - 160)/2);
+  window = initscr();
+
   timeout(0);
   noecho();
   start_color();
@@ -108,6 +105,7 @@ Program::Program(int argc, char** argv) {
 //Come up with a solution that is guaranteed to work when 
 //multiple threads are running
 void sighandler(int sig) {
+  endwin();
   utility->unload();
   exit(EXIT_SUCCESS);
 }

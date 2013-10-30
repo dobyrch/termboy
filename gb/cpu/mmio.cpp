@@ -15,6 +15,7 @@ void CPU::mmio_joyp_poll() {
   static time_t prev_sec = 0;
   static suseconds_t prev_usec = 0;
 
+  //TODO:  Move input to an appropriate method in interface
   struct timeval tv;
   int ch;
 
@@ -27,16 +28,16 @@ void CPU::mmio_joyp_poll() {
       prev_usec = tv.tv_usec;
 
       switch(ch) {
-      case 'd':
+      case 'f':
         dpad = 1 << 0;
         break;
-      case 'a':
+      case 's':
         dpad = 1 << 1;
         break;
-      case 'w':
+      case 'e':
         dpad = 1 << 2;
         break;
-      case 's':
+      case 'd':
         dpad = 1 << 3;
         break;
       case 'j':
@@ -52,6 +53,7 @@ void CPU::mmio_joyp_poll() {
         button = 1 << 3;
         break;
       }
+      //TODO: handle exit key sequence here instead of in ethos
     }
   } else if (tv.tv_sec - prev_sec > 0L || tv.tv_usec - prev_usec > 99999L) {
     button = 0;
