@@ -20,17 +20,11 @@ Required Libraries:
 TODO
 ----
 * Keyboard input fix (multipress & key up/down events)
+* Center display on screen
 * Restore terminal settings after exit
 * Accept parameters in run script; handle bad input
+* Rename executable to 'termboy'
 * GB Color support
+* Continue deleting unused code
 * Remove configuration files
 * Check for boot.rom
-* Continue deleting unused code
-
-WISHLIST
---------
-* Rewrite in ANSI C
-* Restyle code to K&R
-* Remove GCC-specific code
-* Create Arch PKGBUILD
-* Port to other Unices
