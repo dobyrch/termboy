@@ -1,4 +1,5 @@
 #include "../ethos.hpp"
+#include "../../ananke/ananke.hpp"
 
 Utility* utility = nullptr;
 
@@ -14,10 +15,11 @@ void Utility::loadMedia(string pathname) {
 
   //if a filename was provided: convert to game folder and then load
   if(!directory::exists(pathname) && file::exists(pathname)) {
-    if(program->ananke.open() == false) return;
-    function<string (string)> open = program->ananke.sym("ananke_open");
-    if(!open) return;
-    string name = open(pathname);
+    //if(program->ananke.open() == false) return;
+    //function<string (string)> open = program->ananke.sym("ananke_open");
+    //if(!open) return;
+    Ananke ananke;
+    string name = ananke.open(pathname);
     if(name.empty()) return;
     return loadMedia(name);
   }

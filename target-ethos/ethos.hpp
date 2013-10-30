@@ -27,7 +27,6 @@ Emulator::Interface& system();
 struct Program {
   vector<Emulator::Interface*> emulator;
   Emulator::Interface* active = nullptr;
-  library ananke;
 
   bool pause;
   bool autopause;

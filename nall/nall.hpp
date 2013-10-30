@@ -16,7 +16,6 @@
 #include <nall/crc16.hpp>
 #include <nall/crc32.hpp>
 #include <nall/directory.hpp>
-#include <nall/dl.hpp>
 #include <nall/endian.hpp>
 #include <nall/file.hpp>
 #include <nall/filemap.hpp>

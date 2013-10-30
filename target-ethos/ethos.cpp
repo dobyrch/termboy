@@ -3,7 +3,7 @@
 #include "ethos.hpp"
 #include "bootstrap.cpp"
 #include "resource/resource.cpp"
-#include "../ananke/ananke.cpp"
+#include "../ananke/ananke.hpp"
 
 Program* program = nullptr;
 DSP dspaudio;
@@ -44,7 +44,7 @@ void Program::main() {
 }
 
 Program::Program(int argc, char** argv) {
-  ananke.open("ananke");
+  //ananke.open("ananke");
 
   program = this;
   pause = false;
@@ -110,8 +110,9 @@ Program::Program(int argc, char** argv) {
 
   //Application::main = {&Program::main, this};
   //Application::run();
-  Ananke ank;
-  ank.sync("/home/dobyrch/ROMs/Game Boy/pokemon_blue.gb");
+  Ananke ananke;
+  //TODO:  This is bad! Remove hardcoded string and use appropriate path
+  ananke.sync("/home/dobyrch/ROMs/Game Boy/pokemon_blue.gb");
   while(true) {
     main();
   }
@@ -122,7 +123,7 @@ Program::Program(int argc, char** argv) {
   //inputManager->saveConfiguration();
   //windowManager->saveGeometry();
 
-  ananke.close();
+  //ananke.close();
 }
 
 //Come up with a solution that is guaranteed to work when 

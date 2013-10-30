@@ -2,7 +2,7 @@ name := higan
 
 processors := arm gsu hg51b lr35902 r6502 r65816 spc700 upd96050
 include processor/Makefile
-
+include ananke/Makefile
 include gb/Makefile
 
 ui_objects := ui-ethos ui-configuration ui-interface ui-utility

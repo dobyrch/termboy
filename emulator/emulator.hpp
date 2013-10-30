@@ -21,7 +21,6 @@ namespace Emulator {
 #include <nall/algorithm.hpp>
 #include <nall/base64.hpp>
 #include <nall/directory.hpp>
-#include <nall/dl.hpp>
 #include <nall/dsp.hpp>
 #include <nall/endian.hpp>
 #include <nall/file.hpp>
