@@ -1,7 +1,7 @@
 Termboy
 =======
 
-Termboy is a Nintendo Game Boy emulator...for your terminal.
+Termboy is a Nintendo Game Boy emulator...for your terminal.  
 Termboy is based on [Higan](http://byuu.org/higan/), but uses ncurses to render the screen.
 
 Compiling
@@ -15,7 +15,7 @@ Required Libraries:
 * ncurses
 * alsa
 
-**Note:** The defintion for mvaddwstr is in "ncurses/curses.h" on Ubuntu, but it's just "curses.h" on Arch Linux.  For development purposes, Just create an ncurses folder in /usr/include and symlink "ncurses/curses.h" to curses.h.
+**Note:** The defintion for mvaddwstr is in "ncurses/curses.h" on Ubuntu, but it's just "curses.h" on Arch Linux.  For development purposes, Just create an ncurses folder in /usr/include and symlink ncurses/curses.h to curses.h.
 
 TODO
 ----

@@ -1,3 +1,4 @@
+#include <ncursesw/curses.h>
 #include <emulator/emulator.hpp>
 
 #include <nall/platform.hpp>
@@ -27,6 +28,7 @@ Emulator::Interface& system();
 struct Program {
   vector<Emulator::Interface*> emulator;
   Emulator::Interface* active = nullptr;
+  WINDOW *window;
 
   bool pause;
   bool autopause;
@@ -45,6 +47,7 @@ struct Program {
   string path(string filename);
   void main();
   void bootstrap();
+  void init_curses();
   Program(int argc, char** argv);
 };
 

@@ -23,6 +23,39 @@ string Program::path(string name) {
   return {userpath, name};
 }
 
+void Program::init_curses() {
+  setlocale(LC_ALL, "");
+  WINDOW *main = initscr();
+  int ymax, xmax;
+  getmaxyx(main, ymax, xmax);
+  //TODO:  Don't hardcode dimensions
+  window = subwin(main, 144, 160, (ymax - 144)/2, (xmax - 160)/2);
+  timeout(0);
+  noecho();
+  start_color();
+
+  //Can use color pairs between 0 and COLOR_PAIRS-1 (COLOR_PAIRS=64 on my machine)
+  init_pair(1, COLOR_BLACK, COLOR_BLACK);
+  init_pair(2, COLOR_BLACK, COLOR_RED);
+  init_pair(3, COLOR_BLACK, COLOR_GREEN);
+  init_pair(4, COLOR_BLACK, COLOR_YELLOW);
+
+  init_pair(5, COLOR_RED, COLOR_BLACK);
+  init_pair(6, COLOR_RED, COLOR_RED);
+  init_pair(7, COLOR_RED, COLOR_GREEN);
+  init_pair(8, COLOR_RED, COLOR_YELLOW);
+
+  init_pair(9, COLOR_GREEN, COLOR_BLACK);
+  init_pair(10, COLOR_GREEN, COLOR_RED);
+  init_pair(11, COLOR_GREEN, COLOR_GREEN);
+  init_pair(12, COLOR_GREEN, COLOR_YELLOW);
+
+  init_pair(13, COLOR_YELLOW, COLOR_BLACK);
+  init_pair(14, COLOR_YELLOW, COLOR_RED);
+  init_pair(15, COLOR_YELLOW, COLOR_GREEN);
+  init_pair(16, COLOR_YELLOW, COLOR_YELLOW);
+}
+
 void Program::main() {
   system().run();
 }
@@ -47,6 +80,8 @@ Program::Program(int argc, char** argv) {
     audio.driver("None");
     audio.init();
   }
+
+  init_curses();
 
   dspaudio.setPrecision(16);
   dspaudio.setBalance(0.0);

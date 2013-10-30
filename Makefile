@@ -14,6 +14,7 @@ target  := ethos
 flags   += -I. -O3 -fomit-frame-pointer
 #flags   += -I. -ggdb -O0
 link    += -lncursesw
+#link += -fvtable-gc -fdadta-sections -ffunction-sections -Wl,--gc-sectionis -Wl,-s
 objects := libco
 
 # profile-guided optimization mode

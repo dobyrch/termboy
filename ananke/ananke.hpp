@@ -1,3 +1,6 @@
+#ifndef ANANKE_HPP
+#define ANANKE_HPP
+
 struct Ananke {
   #include "configuration.cpp"
   string libraryPath;
@@ -28,3 +31,5 @@ struct Ananke {
   string open(string filename = "");
   string sync(string pathname);
 };
+
+#endif

@@ -63,7 +63,7 @@ void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned widt
 
   //Unicode LEFT HALF BLOCK
   wchar_t block[] = {L'\u258c', L'\0'};
-  
+
   for (int x = 0; x < width; x += 2) {
     for (int y = 0; y < height; ++y) {
         switch (data[x + width*y]) {
