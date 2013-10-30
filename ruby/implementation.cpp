@@ -1,9 +1,9 @@
 /* Global Headers */
 
 #if defined(PLATFORM_X)
-  #include <X11/Xlib.h>
-  #include <X11/Xutil.h>
-  #include <X11/Xatom.h>
+  //#include <X11/Xlib.h>
+  //#include <X11/Xutil.h>
+  //#include <X11/Xatom.h>
 #elif defined(PLATFORM_OSX)
   #define decimal CocoaDecimal
   #include <Cocoa/Cocoa.h>
