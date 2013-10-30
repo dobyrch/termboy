@@ -14,4 +14,4 @@ echo -en '\e]P39abb05' # Yellow
 #Specify font in case no default set
 setfont -h4
 
-out/higan ~/ROMs/pokemon_blue.gb
+out/termboy ~/ROMs/pokemon_blue.gb

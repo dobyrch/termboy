@@ -1,4 +1,4 @@
-name := higan
+name := termboy
 
 processors := arm gsu hg51b lr35902 r6502 r65816 spc700 upd96050
 include processor/Makefile
