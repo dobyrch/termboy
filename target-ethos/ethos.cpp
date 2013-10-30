@@ -13,11 +13,6 @@ Emulator::Interface& system() {
   return *program->active;
 }
 
-bool Program::focused() {
-  //return config->input.focus.allow || presentation->focused();
-  return true;
-}
-
 string Program::path(string name) {
   string path = {basepath, name};
   if(file::exists(path) || directory::exists(path)) return path;
@@ -29,72 +24,29 @@ string Program::path(string name) {
 }
 
 void Program::main() {
-  inputManager->poll();
-  utility->updateStatus();
-  //autopause = config->input.focus.pause && presentation->focused() == false;
-  autopause = false;
-
-  /*if(active == nullptr || system().loaded() == false || pause || autopause) {
-    audio.clear();
-    usleep(20 * 1000);
-    return;
-  }*/
-
   system().run();
 }
 
 Program::Program(int argc, char** argv) {
-  //ananke.open("ananke");
-
   program = this;
-  pause = false;
-  autopause = false;
 
   basepath = dir(realpath(argv[0]));
-  userpath = {nall::configpath(), "higan/"};
-  sharedpath = {nall::sharedpath(), "higan/"};
+  userpath = {nall::configpath(), "termboy/"};
+  sharedpath = {nall::sharedpath(), "termboy/"};
   directory::create(userpath);
 
   bootstrap();
   active = nullptr;
 
-  /*if(Intrinsics::platform() == Intrinsics::Platform::OSX) {
-    normalFont = Font::sans(12);
-    boldFont = Font::sans(12, "Bold");
-    titleFont = Font::sans(20, "Bold");
-    monospaceFont = Font::monospace(8);
-  } else {
-    normalFont = Font::sans(8);
-    boldFont = Font::sans(8, "Bold");
-    titleFont = Font::sans(16, "Bold");
-    monospaceFont = Font::monospace(8);
-  }*/
-
   config = new ConfigurationSettings;
-  video.driver(config->video.driver);
-  audio.driver("ALSA");
-  input.driver(config->input.driver);
-
   utility = new Utility;
-  inputManager = new InputManager;
-  //presentation->setVisible();
 
-  utility->resize();
+  audio.driver("ALSA");
 
-  //video.set(Video::Handle, presentation->viewport.handle());
-  //video.set(Video::Handle, 0);
-  //if(!video.cap(Video::Depth) || !video.set(Video::Depth, depth = 30u)) {
-  //  video.set(Video::Depth, depth = 24u);
-  //}
-  //if(video.init() == false) { video.driver("None"); video.init(); }
-
-  //audio.set(Audio::Handle, presentation->viewport.handle());
-  //audio.set(Audio::Handle, 0);
-  if(audio.init() == false) { audio.driver("None"); audio.init(); }
-
-  //input.set(Input::Handle, presentation->viewport.handle());
-  //input.set(Input::Handle, 0);
-  //if(input.init() == false) { input.driver("None"); input.init(); }
+  if(audio.init() == false) {
+    audio.driver("None");
+    audio.init();
+  }
 
   dspaudio.setPrecision(16);
   dspaudio.setBalance(0.0);
@@ -103,15 +55,12 @@ Program::Program(int argc, char** argv) {
   utility->synchronizeRuby();
   utility->updateShader();
 
-  if(config->video.startFullScreen && argc >= 2) utility->toggleFullScreen();
-  //Application::processEvents();
+  if(argc >= 2)
+    utility->loadMedia(argv[1]);
 
-  if(argc >= 2) utility->loadMedia(argv[1]);
-
-  //Application::main = {&Program::main, this};
-  //Application::run();
-  Ananke ananke;
   //TODO:  This is bad! Remove hardcoded string and use appropriate path
+  //TODO:  periodically sync RAM in case of crash?
+  Ananke ananke;
   ananke.sync("/home/dobyrch/ROMs/Game Boy/pokemon_blue.gb");
   while(true) {
     main();
@@ -119,11 +68,6 @@ Program::Program(int argc, char** argv) {
 
   utility->unload();
   config->save();
-  //browser->saveConfiguration();
-  //inputManager->saveConfiguration();
-  //windowManager->saveGeometry();
-
-  //ananke.close();
 }
 
 //Come up with a solution that is guaranteed to work when 
@@ -134,41 +78,9 @@ void sighandler(int sig) {
 }
 
 int main(int argc, char** argv) {
-  #if defined(PLATFORM_WINDOWS)
-  utf8_args(argc, argv);
-  #endif
-
   signal(SIGINT, sighandler);
-  //Application::setName("higan");
 
-  //Application::Windows::onModalBegin = [&] {
-    audio.clear();
-  //};
-
-  //Application::Cocoa::onActivate = [&] {
-  //  presentation->setVisible();
-  //};
-
-  /*Application::Cocoa::onAbout = [&] {
-    MessageWindow()
-    .setTitle({"About ", Emulator::Name})
-    .setText({
-      Emulator::Name, " v", Emulator::Version, "\n",
-      "Author: ", Emulator::Author, "\n",
-      "License: ", Emulator::License, "\n",
-      "Website: ", Emulator::Website
-    })
-    .information();
-  };*/
-
-  /*Application::Cocoa::onPreferences = [&] {
-    settings->setVisible();
-    settings->panelList.setFocused();
-  };*/
-
-  /*Application::Cocoa::onQuit = [&] {
-    Application::quit();
-  };*/
+  audio.clear();
 
   new Program(argc, argv);
   delete program;

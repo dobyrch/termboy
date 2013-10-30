@@ -8,7 +8,7 @@ Compiling
 ---------
 Required Tools:
 
-* g++ (>4.7)
+* g++ (>= 4.7)
 
 Required Libraries:
 
