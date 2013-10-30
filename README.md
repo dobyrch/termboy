@@ -10,21 +10,14 @@ Required Tools:
 
 Required Libraries:
 * ncurses
-* X11
-* openGL
-* Xv
-* SDL
-* ao
-* openAL
-* pulseaudio
-Note:  Most of these libraries will eventually be removed.  Termboy should only require ncurses and alsa; the other libraries are artifacts from the original emulator that have not yet been stripped out.
+* alsa
 
 Weird Stuff
 -----------
 
 The defintion for mvaddwstr is in ncurses/curses.h on Ubuntu, but it's just curses.h on Arch Linux.  For development purposes, Just create an ncurses folder in /usr/include and symlink ncurses/curses.h to curses.h.
 
-The Makefile automatically installs libananke.so.  The Makefiles should be rewritten after we remove all GUI dependencies.
+Remember to run 'make' and 'make install' in the ananke directory to generate the required shared library
 
 TODO
 ----
