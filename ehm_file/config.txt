@@ -1,0 +1,9 @@
+	generates:
+	termboy/settings.bml
+	ananke/settings.bml
+	<dir>/Game Boy/<.gb file> [~/Emulation/Game Boy/awakening.gb]
+		saves here when no path specified in library.bml
+
+	needs:
+	termboy/Game Boy.sys/boot.rom
+	termboy/Game Boy.sys/manifest.bml

@@ -1,0 +1,10 @@
+#!/bin/sh
+#!/usr/bin/sh
+
+	echo -en "\e]P0073642" # Black
+    	echo -en "\e]P1dc322f" # Red
+    	echo -en "\e]P2859900" # Green
+    	echo -en "\e]P3b58900" # Yellow
+	echo -en "\e]P7eee8d5" # White
+
+setfont 
