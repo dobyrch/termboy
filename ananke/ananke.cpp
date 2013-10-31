@@ -19,7 +19,7 @@ namespace Database {
 //FileDialog *fileDialog = nullptr;
 
 Ananke::Ananke() {
-  libraryPath = string::read({configpath(), "higan/library.bml"}).strip().ltrim<1>("Path: ").replace("\\", "/");
+  libraryPath = string::read({configpath(), "termboy/library.bml"}).strip().ltrim<1>("Path: ").replace("\\", "/");
   if(libraryPath.empty()) libraryPath = {userpath(), "Emulation/"};
   if(libraryPath.endswith("/") == false) libraryPath.append("/");
 }
