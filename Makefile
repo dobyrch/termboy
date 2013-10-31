@@ -11,10 +11,10 @@ target  := ethos
 # console := true
 
 # compiler
-flags   += -I. -O3 -fomit-frame-pointer
-#flags   += -I. -ggdb -O0
+#flags   += -I. -O3 -fomit-frame-pointer
+flags   += -I. -ggdb -O0
 link    += -lncursesw
-link += -fdata-sections -ffunction-sections -Wl,--gc-sections -Wl,-s
+#link += -fdata-sections -ffunction-sections -Wl,--gc-sections -Wl,-s
 objects := libco
 
 # profile-guided optimization mode

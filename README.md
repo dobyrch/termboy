@@ -26,6 +26,7 @@ TODO
 * Remove configuration files
 * Check for boot.rom
 * Continue deleting unused code
+* Try on Raspberry Pi
 
 Wishlist
 --------

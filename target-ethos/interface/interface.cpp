@@ -107,9 +107,9 @@ void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned widt
         xout = x/2;
 
         if (height < ymax)
-          yout += (ymax - height)/2;
+          yout += ymax/2 - height/2;
         if (width < xmax)
-          xout += xmax - width;
+          xout += xmax/2 - width/4;
 
         attron(COLOR_PAIR(cpair));
         mvaddwstr(yout, xout, block);
