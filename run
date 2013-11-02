@@ -1,11 +1,11 @@
 #!/bin/sh
 #!/usr/bin/sh
 
-echo -en '\e]P7052505' # White (so cursor isn't visible)
-echo -en '\e]P0052505' # Black
-echo -en '\e]P11d551d' # Red
-echo -en '\e]P28bac05' # Green
-echo -en '\e]P39abb05' # Yellow
+echo -e '\e]P7052505' # White (so cursor isn't visible)
+echo -e '\e]P0052505' # Black
+echo -e '\e]P11d551d' # Red
+echo -e '\e]P28bac05' # Green
+echo -e '\e]P39abb05' # Yellow
 
 #setterm -repeat on
 #set repeat rate (what's the default?)
@@ -14,4 +14,4 @@ echo -en '\e]P39abb05' # Yellow
 #Specify font in case no default set
 setfont -h4
 
-out/termboy ~/ROMs/pokemon_blue.gb
+out/termboy ~/ROMs/awakening.gb

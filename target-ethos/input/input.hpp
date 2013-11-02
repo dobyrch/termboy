@@ -1,3 +1,16 @@
+#include <fcntl.h>
+#include <stdio.h>
+#include <signal.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <termios.h>
+#include <linux/kd.h>
+#include <ncursesw/curses.h>
+#include <sys/ioctl.h>
+#include <sys/stat.h>
+
+namespace input {
+
 struct AbstractInput {
   string name;
   string mapping;
@@ -42,24 +55,32 @@ struct HotkeyInput : DigitalInput {
 };
 
 struct InputManager {
-  vector<AbstractInput*> inputMap;
-  vector<HotkeyInput*> hotkeyMap;
-  int16_t scancode[2][Scancode::Limit];
-  bool activeScancode;
+  //vector<AbstractInput*> inputMap;
+  //vector<HotkeyInput*> hotkeyMap;
+  //bool activeScancode;
+  termios tty_attr_old;
+  int old_keyboard_mode;
 
-  void bind();
+  int setupKeyboard();
+  void restoreKeyboard();
+
+  /*void bind();
   void poll();
   int16_t poll(unsigned scancode);
   void saveConfiguration();
   void bootstrap();
+  */
   InputManager();
 
   //hotkeys.cpp
-  void appendHotkeys();
+  /*void appendHotkeys();
   void pollHotkeys();
+  */
 
-private:
+/*private:
   Configuration::Document config;
+  */
 };
 
 extern InputManager* inputManager;
+}

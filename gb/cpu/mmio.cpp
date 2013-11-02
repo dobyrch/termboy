@@ -1,6 +1,8 @@
 #ifdef CPU_CPP
-#include <ncursesw/curses.h>
 #include <sys/time.h>
+#include "../../target-ethos/input/input.hpp"
+
+using namespace input;
 
 unsigned CPU::wram_addr(uint16 addr) const {
   addr &= 0x1fff;
@@ -12,53 +14,67 @@ unsigned CPU::wram_addr(uint16 addr) const {
 void CPU::mmio_joyp_poll() {
   static unsigned button = 0;
   static unsigned dpad = 0;
-  static time_t prev_sec = 0;
-  static suseconds_t prev_usec = 0;
+  int scancode;
 
-  //TODO:  Move input to an appropriate method in interface
-  struct timeval tv;
-  int ch;
-
-  gettimeofday(&tv, NULL);
-  ch = getch();
-
-  if (ch != ERR) {
-    if (tv.tv_sec - prev_sec > 0L || tv.tv_usec - prev_usec > 16666L) {
-      prev_sec = tv.tv_sec;
-      prev_usec = tv.tv_usec;
-
-      switch(ch) {
-      case 'f':
-        dpad = 1 << 0;
-        break;
-      case 's':
-        dpad = 1 << 1;
-        break;
-      case 'e':
-        dpad = 1 << 2;
-        break;
-      case 'd':
-        dpad = 1 << 3;
-        break;
-      case 'j':
-        button = 1 << 0;
-        break;
-      case 'k':
-        button = 1 << 1;
-        break;
-      case ' ':
-        button = 1 << 2;
-        break;
-      case 10:
-        button = 1 << 3;
-        break;
-      }
-      //TODO: handle exit key sequence here instead of in ethos
+  //TODO:  move to Input
+  scancode = getch();
+  //if (read(STDIN_FILENO, &scancode, 1) > 0) {
+    switch(scancode) {
+    case 33: /* F  down */
+      dpad |= 1 << 0;
+      break;
+    case 161: /* F up */
+      dpad &= ~(1 << 0);
+      break;
+    case 31: /* S down */
+      dpad |= 1 << 1;
+      break;
+    case 159: /* S up */
+      dpad &= ~(1 << 1);
+      break;
+    case 18: /* E down */
+      dpad |= 1 << 2;
+      break;
+    case 146: /* E up */
+      dpad &= ~(1 << 2);
+      break;
+    case 32: /* D down */
+      dpad |= 1 << 3;
+      break;
+    case 160: /* D up */
+      dpad &= ~(1 << 3);
+      break;
+    case 37: /* K down */
+      button |= 1 << 0;
+      break;
+    case 165: /* K up */
+      button &= ~(1 << 0);
+      break;
+    case 36: /* J down */
+      button |= 1 << 1;
+      break;
+    case 164: /* J up */
+      button &= ~(1 << 1);
+      break;
+    case 34: /* G down */
+      button |= 1 << 2;
+      break;
+    case 162: /* G up */
+      button &= ~(1 << 2);
+      break;
+    case 35: /* H down */
+      button |= 1 << 3;
+      break;
+    case 163: /* H up */
+      button &= ~(1 << 3);
+      break;
+    case 1: /* Escape down */
+      //TODO:  restore keyboard and quit
+      //inputManager->restoreKeyboard();
+      //exit(EXIT_SUCCESS);
+      break;
     }
-  } else if (tv.tv_sec - prev_sec > 0L || tv.tv_usec - prev_usec > 99999L) {
-    button = 0;
-    dpad = 0;
-  }
+  //}
 
   /*
   interface->inputPoll(0, 0, (unsigned)Input::Start) << 3;
