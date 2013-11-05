@@ -107,9 +107,9 @@ void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned widt
         yout = y;
         xout = x/2;
 
-        if (height < ymax)
+        if (ymax > height)
           yout += ymax/2 - height/2;
-        if (width/2 < xmax)
+        if (xmax > width/2)
           xout += xmax/2 - width/4;
 
         attron(COLOR_PAIR(cpair));

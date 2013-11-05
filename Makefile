@@ -81,8 +81,8 @@ clean:
 	-@$(call delete,*.manifest)
 
 archive:
-	if [ -f higan.tar.xz ]; then rm higan.tar.xz; fi
-	tar -cJf higan.tar.xz `ls`
+	if [ -f termboy.tar.xz ]; then rm termboy.tar.xz; fi
+	tar -cJf termboy.tar.xz `ls`
 sync:
 ifeq ($(shell id -un),byuu)
 	if [ -d ./libco ]; then rm -r ./libco; fi

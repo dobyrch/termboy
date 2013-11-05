@@ -15,7 +15,7 @@ Required Libraries:
 * alsa
 * ncurses
 
-**Note:** The defintion for mvaddwstr is in "ncurses/curses.h" on Ubuntu, but it's just "curses.h" on Arch Linux.  For development purposes, Just create an ncurses folder in /usr/include and symlink ncurses/curses.h to curses.h.
+**Note:** The definition for mvaddwstr is in "ncurses/curses.h" on Ubuntu, but it's just "curses.h" on Arch Linux.  For development purposes, Just create an ncurses folder in /usr/include and symlink ncurses/curses.h to curses.h.
 
 TODO
 ----
@@ -27,6 +27,7 @@ TODO
 * Remove configuration files
 * Check for boot.rom
 * Continue deleting unused code
+* Consolidate makefiles
 
 Wishlist
 --------

@@ -53,15 +53,6 @@ endif
 build: $(objects)
 ifeq ($(platform),x)
 	$(compiler) -o out/$(name) $(objects) $(link)
-else ifeq ($(platform),osx)
-	if [ -d out/$(name).app ]; then rm -r out/$(name).app; fi
-	mkdir out/$(name).app
-	mkdir out/$(name).app/Contents
-	mkdir out/$(name).app/Contents/MacOS
-	mkdir out/$(name).app/Contents/Resources
-	cp data/Info.plist out/$(name).app/Contents/Info.plist
-	sips -s format icns data/higan512.png --out out/$(name).app/Contents/Resources/higan.icns
-	$(compiler) -o out/$(name).app/Contents/MacOS/$(name) $(objects) $(link)
 endif
 
 resource:
@@ -70,18 +61,9 @@ resource:
 install:
 ifeq ($(platform),x)
 	sudo install -D -m 755 out/$(name) $(DESTDIR)$(prefix)/bin/$(name)
-	sudo install -D -m 644 data/$(name).png $(DESTDIR)$(prefix)/share/pixmaps/$(name).png
-	sudo install -D -m 644 data/$(name).desktop $(DESTDIR)$(prefix)/share/applications/$(name).desktop
-
 	sudo mkdir -p /usr/share/$(name)
 	sudo cp -R profile/* /usr/share/$(name)
-	sudo cp data/cheats.bml /usr/share/$(name)/cheats.bml
 	sudo chmod -R 777 /usr/share/$(name)
-else ifeq ($(platform),osx)
-	sudo mkdir -p /Library/Application\ Support/$(name)
-	sudo cp -R profile/* /Library/Application\ Support/$(name)
-	sudo cp data/cheats.bml /Library/Application\ Support/$(name)/cheats.bml
-	sudo chmod -R 777 /Library/Application\ Support/$(name)
 endif
 
 uninstall:

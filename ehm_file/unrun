@@ -1,0 +1,12 @@
+#!/bin/bash
+#!/usr/bin/sh
+
+echo -e -n '\e]P0073642' # White (so cursor isn't visible)
+echo -e -n '\e]P1dc322f' # Black
+echo -e -n '\e]P2859900' # Red
+echo -e -n '\e]P3b58900' # Green
+echo -e -n '\e]P7eee8d5' # Yellow
+
+#Specify font in case no default set
+setfont 
+
