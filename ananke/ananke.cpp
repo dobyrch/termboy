@@ -19,6 +19,9 @@ namespace Database {
 //FileDialog *fileDialog = nullptr;
 
 Ananke::Ananke() {
+  //TODO: Don't generate Emulation directory
+  //Either warn that the configuration file does not exist,
+  //or put all data in a .termboy directory
   libraryPath = string::read({configpath(), "termboy/library.bml"}).strip().ltrim<1>("Path: ").replace("\\", "/");
   if(libraryPath.empty()) libraryPath = {userpath(), "Emulation/"};
   if(libraryPath.endswith("/") == false) libraryPath.append("/");

@@ -67,6 +67,7 @@ void Interface::videoRefresh(const uint32_t* data, unsigned pitch, unsigned widt
   //Unicode LEFT HALF BLOCK
   wchar_t block[] = {L'\u258c', L'\0'};
 
+  //TODO: draw on separate thread to help with audio crackling
   for (int x = 0; x < width; x += 2) {
     for (int y = 0; y < height; ++y) {
         switch (data[x + width*y]) {
@@ -141,8 +142,8 @@ void Interface::audioSample(int16_t lsample, int16_t rsample) {
 }
 
 int16_t Interface::inputPoll(unsigned port, unsigned device, unsigned input) {
-  unsigned guid = system().port[port].device[device].input[input].guid;
-  return inputManager->inputMap[guid]->poll();
+  //unsigned guid = system().port[port].device[device].input[input].guid;
+  return 0;//inputManager->inputMap[guid]->poll();
 }
 
 unsigned Interface::dipSettings(const Markup::Node& node) {

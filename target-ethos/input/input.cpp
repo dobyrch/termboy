@@ -1,6 +1,7 @@
-#include <ncursesw/curses.h>
 #include "../ethos.hpp"
-#include "hotkeys.cpp"
+
+namespace input {
+
 InputManager* inputManager = nullptr;
 
 void AbstractInput::bind() {
@@ -82,7 +83,7 @@ int16_t DigitalInput::poll() {
   //if(program->focused() == false) return 0;
   bool result = logic;
 
-  for(auto& item : inputList) {
+  /*for(auto& item : inputList) {
     int16_t value = inputManager->poll(item.scancode);
     bool output = logic;
     switch(item.type) {
@@ -97,7 +98,7 @@ int16_t DigitalInput::poll() {
     }
     if(logic == 0) result |= output;
     if(logic == 1) result &= output;
-  }
+  }*/
 
   return result;
 }
@@ -126,14 +127,14 @@ int16_t RelativeInput::poll() {
   //if(program->focused() == false) return 0;
   int16_t result = 0;
 
-  for(auto& item : inputList) {
+  /*for(auto& item : inputList) {
     int16_t value = inputManager->poll(item.scancode);
     switch(item.type) {
     case Input::Type::MouseAxis: value = input.acquired() ? value : 0; break;
     case Input::Type::Axis:      value = value;                        break;
     }
     result += value;
-  }
+  }*/
 
   return result;
 }
@@ -213,77 +214,76 @@ int16_t AbsoluteInput::poll() {
 
 HotkeyInput::HotkeyInput() {
   logic = 1;  //AND
-  inputManager->hotkeyMap.append(this);
+  //inputManager->hotkeyMap.append(this);
 }
 
 //
 
-void InputManager::bind() {
-  for(auto& input : inputMap) input->bind();
-  for(auto& input : hotkeyMap) input->bind();
+int InputManager::setupKeyboard() {
+  struct termios tty_attr;
+  int flags;
+
+  /* make stdin non-blocking */
+  flags = fcntl(STDIN_FILENO, F_GETFL);
+  flags |= O_NONBLOCK;
+  fcntl(STDIN_FILENO, F_SETFL, flags);
+
+  /* save old keyboard mode */
+  if (ioctl(STDIN_FILENO, KDGKBMODE, &old_keyboard_mode) < 0) {
+      return 0;
+  }
+
+  tcgetattr(STDIN_FILENO, &tty_attr_old);
+
+  /* turn off buffering, echo and key processing */
+  tty_attr = tty_attr_old;
+  tty_attr.c_lflag &= ~(ICANON | ECHO | ISIG);
+  tty_attr.c_iflag &= ~(ISTRIP | INLCR | ICRNL | IGNCR | IXON | IXOFF);
+  tcsetattr(STDIN_FILENO, TCSANOW, &tty_attr);
+
+  ioctl(STDIN_FILENO, KDSKBMODE, K_RAW);
+  return 1;
 }
 
-void InputManager::poll() {
+void InputManager::restoreKeyboard() {
+  tcsetattr(STDIN_FILENO, TCSAFLUSH, &tty_attr_old);
+  ioctl(STDIN_FILENO, KDSKBMODE, old_keyboard_mode);
+}
+
+/*void InputManager::bind() {
+  for(auto& input : inputMap) input->bind();
+  for(auto& input : hotkeyMap) input->bind();
+}*/
+
+/*void InputManager::poll() {
   using nall::Keyboard;
 
   //activeScancode = !activeScancode;
   //if(input.poll(scancode[activeScancode]) == false) return;
 
-  /*for(unsigned n = 0; n < Scancode::Limit; n++) {
-    if(scancode[0][n] != scancode[1][n]) {
-      if(settings->focused()) {
-        inputSettings->inputEvent(n, scancode[activeScancode][n]);
-        hotkeySettings->inputEvent(n, scancode[activeScancode][n]);
-      }
-    }
-  }*/
-
   //if(presentation->focused()) pollHotkeys();
   //pollHotkeys();
-}
+}*/
 
 //Called by DigitalInput::poll
-int16_t InputManager::poll(unsigned scancode) {
+/*int16_t InputManager::poll(unsigned scancode) {
   //TODO: Remove this junk.  This method should never be called.
   //char buff[20]; 
 
-  /*if (this->scancode[activeScancode][scancode] != 0) {
-    sprintf(buff, "%d:%d\n", activeScancode, scancode);
-    addstr(buff);
-  }*/
-
-  /*int ch = getch();
-
-  if (ch != ERR) {
-    //sprintf(buff, "getch: %d\n", ch);
-    //addstr(buff);
-
-    switch (ch) {
-      case 'A':  this->scancode[activeScancode][89] = 1; break;
-      case 'B':  this->scancode[activeScancode][90] = 1; break;
-      case 'C':  this->scancode[activeScancode][92] = 1; break;
-      case 'D':  this->scancode[activeScancode][91] = 1; break;
-      case 'z':  this->scancode[activeScancode][62] = 1; break;
-      case 'x':  this->scancode[activeScancode][60] = 1; break;
-      case  10:  this->scancode[activeScancode][94] = 1; break;
-      case 127:  this->scancode[activeScancode][30] = 1; break;
-    }
-  }*/
-
   return this->scancode[activeScancode][scancode];
-}
+}*/
 
-void InputManager::saveConfiguration() {
+/*void InputManager::saveConfiguration() {
   config.save(program->path("input.bml"));
-}
+}*/
 
 InputManager::InputManager() {
   inputManager = this;
-  activeScancode = 0;
-  bootstrap();
+  //activeScancode = 0;
+  //bootstrap();
 }
 
-void InputManager::bootstrap() {
+/*void InputManager::bootstrap() {
   unsigned guid = 0;
   for(auto& emulator : program->emulator) {
     Configuration::Node emulatorNode;
@@ -328,4 +328,6 @@ void InputManager::bootstrap() {
   config.save(program->path("input.bml"));
 
   bind();
+}*/
+
 }

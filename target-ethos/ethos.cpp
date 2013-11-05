@@ -78,6 +78,8 @@ Program::Program(int argc, char** argv) {
     audio.init();
   }
 
+  inputManager = new InputManager();
+  inputManager->setupKeyboard();
   init_curses();
 
   dspaudio.setPrecision(16);
@@ -102,16 +104,19 @@ Program::Program(int argc, char** argv) {
   config->save();
 }
 
-//Come up with a solution that is guaranteed to work when 
-//multiple threads are running
+//TODO: Come up with a solution that is guaranteed to work when multiple threads are running
 void sighandler(int sig) {
   endwin();
+  inputManager->restoreKeyboard();
   utility->unload();
+  printf("Caught signal: %d\n", sig);
   exit(EXIT_SUCCESS);
 }
 
 int main(int argc, char** argv) {
   signal(SIGINT, sighandler);
+  signal(SIGQUIT, sighandler);
+  signal(SIGSEGV, sighandler);
 
   audio.clear();
 

@@ -22,6 +22,7 @@ using namespace ruby;
 #include "utility/utility.hpp"
 #include "input/input.hpp"
 #include "resource/resource.hpp"
+using namespace input;
 
 Emulator::Interface& system();
 

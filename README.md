@@ -19,8 +19,9 @@ Required Libraries:
 
 TODO
 ----
-* Keyboard input fix (multipress & key up/down events)
+* Figure out why Enter generates SIGQUIT
 * Restore terminal settings after exit
+* Allow in-game volume adjustment
 * Accept parameters in run script; handle bad input
 * GB Color support
 * Remove configuration files
@@ -34,5 +35,6 @@ Wishlist
 * Rewrite in ANSI C
 * Restyle code to K&R
 * Remove GCC-specific code
+* Write man page
 * Create Arch PKGBUILD
 * Port to other Unices
