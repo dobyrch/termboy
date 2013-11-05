@@ -21,6 +21,7 @@ TODO
 ----
 * Figure out why Enter generates SIGQUIT
 * Restore terminal settings after exit
+* Allow in-game volume adjustment
 * Accept parameters in run script; handle bad input
 * GB Color support
 * Remove configuration files

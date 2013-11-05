@@ -1,5 +1,6 @@
 #!/bin/sh
 #!/usr/bin/sh
+clear
 
 echo -e '\e]P7052505' # White (so cursor isn't visible)
 echo -e '\e]P0052505' # Black
@@ -14,4 +15,7 @@ echo -e '\e]P39abb05' # Yellow
 #Specify font in case no default set
 setfont -h4
 
-out/termboy ~/ROMs/awakening.gb
+out/termboy ~/ROMs/mario.gb
+
+setfont
+clear
