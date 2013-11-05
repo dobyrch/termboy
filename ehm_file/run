@@ -1,0 +1,18 @@
+#!/bin/bash
+#!/usr/bin/sh
+
+
+echo -e -n '\e]P7052505' # White (so cursor isn't visible)
+echo -e -n '\e]P0052505' # Black
+echo -e -n '\e]P11d551d' # Red
+echo -e -n '\e]P28bac05' # Green
+echo -e -n '\e]P39abb05' # Yellow
+
+#setterm -repeat on
+#set repeat rate (what's the default?)
+#kdbrate -d 250
+
+#Specify font in case no default set
+#setfont -h4
+
+#out/termboy ~/ROMs/pokemon_blue.gb
