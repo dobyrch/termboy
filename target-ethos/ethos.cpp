@@ -32,10 +32,10 @@ void Program::init_curses() {
   timeout(0);
   noecho();
 
-  if (!has_colors() || ! can_change_color()) {
+  /*if (!has_colors() || ! can_change_color()) {
     //TODO: Add descriptive error message, clean up
     exit(EXIT_FAILURE);
-  }
+  }*/
 
   init_pair(1, COLOR_BLACK, COLOR_BLACK);
   init_pair(2, COLOR_BLACK, COLOR_RED);

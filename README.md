@@ -8,6 +8,7 @@ Compiling
 ---------
 Required Tools:
 
+* make
 * g++ (>= 4.7)
 
 Required Libraries:
@@ -16,6 +17,10 @@ Required Libraries:
 * ncurses
 
 **Note:** The definition for mvaddwstr is in "ncurses/curses.h" on Ubuntu, but it's just "curses.h" on Arch Linux.  For development purposes, Just create an ncurses folder in /usr/include and symlink ncurses/curses.h to curses.h.
+
+Usage
+-----
+After running `make install`, start Termboy by running `termboy <ROM.gb>` in a Linux virtual console.  Use ESDF for the D-pad, G/H for SELECT/START, and J/K for B/A.  Press ESC to quit.
 
 TODO
 ----
