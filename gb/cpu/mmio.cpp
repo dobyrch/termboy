@@ -71,7 +71,7 @@ void CPU::mmio_joyp_poll() {
     case 1: /* Escape down */
       //TODO:  restore keyboard and quit
       //inputManager->restoreKeyboard();
-      //exit(EXIT_SUCCESS);
+      exit(EXIT_SUCCESS);
       break;
     }
   //}

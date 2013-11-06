@@ -1,12 +1,31 @@
 #!/bin/bash
 #!/usr/bin/sh
 
-echo -e -n '\e]P7052505' # White (so cursor isn't visible)
-echo -e -n '\e]P0052505' # Black
-echo -e -n '\e]P11d551d' # Red
-echo -e -n '\e]P28bac05' # Green
-echo -e -n '\e]P39abb05' # Yellow
+if [ $# -ne 1 ]
+then
+    echo "Usage: $0 <ROM>"
+    exit 1
+fi
 
-#Specify font in case no default set
+if [ ! -f $1 ]
+then
+    echo "$0: No such file"
+    exit 1
+fi
+
+clear
 setfont -h4 font.psfu.gz
 
+out/termboy $1
+ret=$?
+
+stty sane
+kbd_mode -a
+setfont font.psfu.gz
+clear
+
+if [ $ret -ne 0 ]
+then
+    echo "$0: Terminated unexpectedly"
+    exit 1
+fi

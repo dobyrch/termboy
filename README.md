@@ -23,6 +23,7 @@ TODO
 * Restore terminal settings after exit (including font & color)
 * Allow in-game volume adjustment
 * Accept parameters in run script; handle bad input
+* Detect terminal resolution
 * GB Color support
 * Remove configuration files
 * Check for boot.rom

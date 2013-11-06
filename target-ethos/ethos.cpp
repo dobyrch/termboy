@@ -24,14 +24,19 @@ string Program::path(string name) {
 }
 
 void Program::init_curses() {
+
   setlocale(LC_ALL, "");
   window = initscr();
+  start_color();
 
   timeout(0);
   noecho();
-  start_color();
 
-  //Can use color pairs between 0 and COLOR_PAIRS-1 (COLOR_PAIRS=64 on my machine)
+  if (!has_colors() || ! can_change_color()) {
+    //TODO: Add descriptive error message, clean up
+    exit(EXIT_FAILURE);
+  }
+
   init_pair(1, COLOR_BLACK, COLOR_BLACK);
   init_pair(2, COLOR_BLACK, COLOR_RED);
   init_pair(3, COLOR_BLACK, COLOR_GREEN);
@@ -51,6 +56,14 @@ void Program::init_curses() {
   init_pair(14, COLOR_YELLOW, COLOR_RED);
   init_pair(15, COLOR_YELLOW, COLOR_GREEN);
   init_pair(16, COLOR_YELLOW, COLOR_YELLOW);
+
+  init_color(COLOR_WHITE, 0, 0, 0);
+  init_color(COLOR_BLACK, 0, 0, 0);
+  init_color(COLOR_RED, 333, 333, 333);
+  init_color(COLOR_GREEN, 667, 667, 667);
+  init_color(COLOR_YELLOW, 1000, 1000, 1000);
+
+  erase();
 }
 
 void Program::main() {
@@ -78,9 +91,9 @@ Program::Program(int argc, char** argv) {
     audio.init();
   }
 
+  init_curses();
   inputManager = new InputManager();
   inputManager->setupKeyboard();
-  init_curses();
 
   dspaudio.setPrecision(16);
   dspaudio.setBalance(0.0);
