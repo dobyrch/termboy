@@ -26,7 +26,8 @@ string Program::path(string name) {
 void Program::init_curses() {
 
   setlocale(LC_ALL, "");
-  window = initscr();
+  //window = subwin(initscr(), 200, 200, 0, 0);
+  window= initscr();
   start_color();
 
   timeout(0);
@@ -114,7 +115,7 @@ Program::Program(int argc, char** argv) {
   }
 
   utility->unload();
-  config->save();
+  //config->save();
 }
 
 //TODO: Come up with a solution that is guaranteed to work when multiple threads are running
