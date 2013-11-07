@@ -7,3 +7,11 @@
 	needs:
 	termboy/Game Boy.sys/boot.rom
 	termboy/Game Boy.sys/manifest.bml
+
+	termboy/settings.bml  generated in target-ethos/configuration/configuration.cpp, commented out the relevant code with no problems
+
+	ananke/settings.bml is generated in ananke/configuration.cpp, commented out the relevant code with no problems
+
+	what is ananke/database used for? it contains boot.rom info
+	
+	ananke folder also contains outdated .cpp folders that have referencees to manifest.bml 
