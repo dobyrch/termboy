@@ -33,3 +33,5 @@ requires:
 
 	current work:
 	commented out write({pathname, "manifest.bml"}, markup); in ananke/game-boy.cpp
+	deleted ruby/video/opengl/main.hpp
+	gb/cartridge/cartridge.cpp seems to be unrelated
