@@ -4,9 +4,9 @@
 using namespace nall;
 
 namespace Database {
-  #include "database/super-famicom.hpp"
-  #include "database/sufami-turbo.hpp"
-  #include "database/bsx-satellaview.hpp"
+//  #include "database/super-famicom.hpp"
+//  #include "database/sufami-turbo.hpp"
+//  #include "database/bsx-satellaview.hpp"
 };
 
 //#include "resource/resource.cpp"
