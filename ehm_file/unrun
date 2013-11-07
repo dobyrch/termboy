@@ -8,5 +8,5 @@ echo -e -n '\e]P3b58900' # Green
 echo -e -n '\e]P7eee8d5' # Yellow
 
 #Specify font in case no default set
-setfont 
+setfont
 

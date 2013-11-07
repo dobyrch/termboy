@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+#TODO: add license information here
+#
+
+USER=username
+REMOTE=remote.host.name
+
+name=`basename $0`
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $name <ROM>"
+    exit 1
+fi
+
+#TODO: don't check until after logging into remote host
+if [ ! -f $1 ]; then
+    echo "$name: No such file"
+    exit 1
+fi
+
+clear
+setfont -o  ~/.config/termboy/font.orig
+setfont -h4 /usr/share/termboy/font.psfu.gz
+
+RET=1
+#TODO: check that termboy binary is installed
+#ssh "$USER@$REMOTE" <<- HERE
+#ssh "debian" <<HERE
+/usr/share/termboy/termboy-bin $1
+RET=$?
+#exit
+#HERE
+
+stty sane
+kbd_mode -a
+#TODO: check if font exists
+setfont ~/.config/termboy/font.orig
+rm ~/.config/termboy/font.orig
+#clear
+
+#Use unique error code to indicate that Termboy exited abnormally with a message
+if [ $RET -ne 0 ]; then
+    echo "$name: Terminated unexpectedly"
+    exit 1
+fi
+
+#TODO: print help when -h appears in arguments
+#How to switch to virtual console, controls, etc

@@ -52,21 +52,15 @@ endif
 # targets
 build: $(objects)
 ifeq ($(platform),x)
-	$(compiler) -o out/$(name) $(objects) $(link)
+	$(compiler) -o out/$(name)-bin $(objects) $(link)
 endif
-
-resource:
-	sourcery $(ui)/resource/resource.bml $(ui)/resource/resource.cpp $(ui)/resource/resource.hpp
 
 install:
-ifeq ($(platform),x)
-	sudo install -D -m 755 out/$(name) $(DESTDIR)$(prefix)/bin/$(name)
-	sudo mkdir -p /usr/share/$(name)
-	sudo cp -R profile/* /usr/share/$(name)
-	sudo chmod -R 777 /usr/share/$(name)
-endif
+	sudo install -D -m 755 $(name) /usr/bin/$(name)
+	sudo install -D -m 755 out/$(name)-bin /usr/share/$(name)/$(name)-bin
+	sudo install -D -m 644 profile/boot.rom /usr/share/$(name)/boot.rom
+	sudo install -D -m 644 font.psfu.gz /usr/share/$(name)/font.psfu.gz
 
 uninstall:
-ifeq ($(platform),x)
-	sudo rm $(DESTDIR)$(prefix)/bin/$(name)
-endif
+	sudo rm /usr/bin/$(name)
+	sudo rm -r /usr/share/$(name)/

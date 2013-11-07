@@ -7,11 +7,11 @@ struct Settings : Configuration::Document {
     node.append(path = userpath(), "Path");
     node.append(geometry = "64,64,480,600", "Geometry");
     append(node, "Settings");
-    directory::create({configpath(), "ananke/"});
-    load({configpath(), "ananke/settings.bml"});
+    //directory::create({configpath(), "ananke/"});
+    //load({configpath(), "ananke/settings.bml"});
   }
 
   ~Settings() {
-    save({configpath(), "ananke/settings.bml"});
+    //save({configpath(), "ananke/settings.bml"});
   }
 } config;

@@ -45,10 +45,10 @@ ConfigurationSettings::ConfigurationSettings() {
 }
 
 void ConfigurationSettings::load() {
-  Configuration::Document::load(program->path("settings.bml"));
-  save();  //creates file if it does not exist
+  //Configuration::Document::load(program->path("settings.bml"));
+  //save();  //creates file if it does not exist
 }
 
 void ConfigurationSettings::save() {
-  Configuration::Document::save(program->path("settings.bml"));
+  //Configuration::Document::save(program->path("settings.bml"));
 }
