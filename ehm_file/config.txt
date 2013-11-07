@@ -1,4 +1,6 @@
-	generates:
+draft 1:	
+
+generates:
 	termboy/settings.bml
 	ananke/settings.bml
 	<dir>/Game Boy/<.gb file> [~/Emulation/Game Boy/awakening.gb]
@@ -12,6 +14,22 @@
 
 	ananke/settings.bml is generated in ananke/configuration.cpp, commented out the relevant code with no problems
 
-	what is ananke/database used for? it contains boot.rom info
+
+draft 2:
+
+requires:
+        termboy/Game Boy.sys/boot.rom
+        termboy/Game Boy.sys/manifest.bml
+
+	boot.rom referenced in:
+	gb/system/system.cpp
+	profile/manifest.bml
 	
-	ananke folder also contains outdated .cpp folders that have referencees to manifest.bml 
+	manifest.bml referenced in:
+	ananke/game-boy.cpp
+	gb/system/system.cpp
+	gb/cartridge/cartridge.cpp
+	ruby/video/opengl/main.hpp
+
+	current work:
+	commented out write({pathname, "manifest.bml"}, markup); in ananke/game-boy.cpp

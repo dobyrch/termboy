@@ -26,7 +26,7 @@ string Ananke::createGameBoyHeuristic(vector<uint8_t> &buffer) {
   markup.append("\ninformation\n  title: ", nall::basename(information.name), "\n");
   if(!information.manifest.empty()) markup = information.manifest;  //override with embedded beat manifest, if one exists
 
-  file::write({pathname, "manifest.bml"}, markup);
+  //file::write({pathname, "manifest.bml"}, markup);
   file::write({pathname, "program.rom"}, buffer);
 
   copyGameBoySaves(pathname);
