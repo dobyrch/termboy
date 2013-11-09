@@ -2,33 +2,33 @@
 #
 #TODO: add license information here
 #
-cd /usr/share/termboy
 
 USER=username
 REMOTE=remote.host.name
+INSTALL_PATH=/usr/share/termboy
 
 name=`basename $0`
 
 if [ $# -ne 1 ]; then
-    echo "Usage: $name <ROM>"
+    echo "Usage: $name <ROM.gb>"
     exit 1
 fi
 
 #TODO: don't check until after logging into remote host
 if [ ! -f $1 ]; then
-    echo "$name: No such file"
+    echo "$name: No such file $1"
     exit 1
 fi
 
 clear
 setfont -o  ~/.config/termboy/font.orig
-setfont -h4 font.psfu.gz
+setfont -h4 $INSTALL_PATH/font.psfu.gz
 
 RET=1
 #TODO: check that termboy binary is installed
 #ssh "$USER@$REMOTE" <<- HERE
 #ssh "debian" <<HERE
-termboy-bin $1
+$INSTALL_PATH/termboy-bin $1
 RET=$?
 #exit
 #HERE

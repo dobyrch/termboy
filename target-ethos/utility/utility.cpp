@@ -52,7 +52,8 @@ void Utility::loadMedia(Emulator::Interface* emulator, Emulator::Interface::Medi
 void Utility::loadMedia(Emulator::Interface* emulator, Emulator::Interface::Media& media, string pathname) {
   unload();
   setInterface(emulator);
-  path(0) = "./"; //program->path({media.name, ".sys/"});
+  //TODO: don't hardcode this!
+  path(0) = "/usr/share/termboy/"; //program->path({media.name, ".sys/"});
   path(media.id) = pathname;
   this->pathname.append(pathname);
 
