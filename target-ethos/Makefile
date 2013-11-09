@@ -59,6 +59,7 @@ install:
 	sudo install -D -m 755 $(name) /usr/bin/$(name)
 	sudo install -D -m 755 out/$(name)-bin /usr/share/$(name)/$(name)-bin
 	sudo install -D -m 644 profile/boot.rom /usr/share/$(name)/boot.rom
+	sudo install -D -m 644 profile/manifest.bml /usr/share/$(name)/manifest.bml
 	sudo install -D -m 644 font.psfu.gz /usr/share/$(name)/font.psfu.gz
 
 uninstall:

@@ -52,7 +52,7 @@ void Utility::loadMedia(Emulator::Interface* emulator, Emulator::Interface::Medi
 void Utility::loadMedia(Emulator::Interface* emulator, Emulator::Interface::Media& media, string pathname) {
   unload();
   setInterface(emulator);
-  path(0) = program->path({media.name, ".sys/"});
+  path(0) = "./"; //program->path({media.name, ".sys/"});
   path(media.id) = pathname;
   this->pathname.append(pathname);
 
@@ -65,7 +65,7 @@ void Utility::loadMedia(Emulator::Interface* emulator, Emulator::Interface::Medi
 }
 
 //request from emulation core to load non-volatile media folder
-void Utility::loadRequest(unsigned id, string name, string type) {
+/*void Utility::loadRequest(unsigned id, string name, string type) {
   //string pathname = browser->select({"Load ", name}, type);
   string pathname = "~/ROMs/Tetris.gb";
   if(pathname.empty()) return;
@@ -73,7 +73,7 @@ void Utility::loadRequest(unsigned id, string name, string type) {
   this->pathname.append(pathname);
 
   system().load(id);
-}
+}*/
 
 //request from emulation core to load non-volatile media file
 void Utility::loadRequest(unsigned id, string path) {

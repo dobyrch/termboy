@@ -1,5 +1,5 @@
 struct Interface : Emulator::Interface::Bind {
-  void loadRequest(unsigned id, string name, string type);
+  //void loadRequest(unsigned id, string name, string type);
   void loadRequest(unsigned id, string path);
   void saveRequest(unsigned id, string path);
   uint32_t videoColor(unsigned source, uint16_t red, uint16_t green, uint16_t blue);

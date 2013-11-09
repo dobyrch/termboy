@@ -4,9 +4,14 @@
 #include "bootstrap.cpp"
 #include "resource/resource.cpp"
 #include "../ananke/ananke.hpp"
+#include <stdio.h>
 
 Program* program = nullptr;
 DSP dspaudio;
+struct color {
+  short r, g, b;
+} white, black, red, green, yellow;
+
 
 Emulator::Interface& system() {
   if(program->active == nullptr) throw;
@@ -37,6 +42,12 @@ void Program::init_curses() {
     //TODO: Add descriptive error message, clean up
     exit(EXIT_FAILURE);
   }*/
+
+  color_content(COLOR_WHITE, &white.r, &white.g, &white.b);
+  color_content(COLOR_BLACK, &black.r, &black.g, &black.b);
+  color_content(COLOR_RED, &red.r, &red.g, &red.b);
+  color_content(COLOR_GREEN, &green.r, &green.g, &green.b);
+  color_content(COLOR_YELLOW, &yellow.r, &yellow.g, &yellow.b);
 
   init_pair(1, COLOR_BLACK, COLOR_BLACK);
   init_pair(2, COLOR_BLACK, COLOR_RED);
@@ -120,18 +131,39 @@ Program::Program(int argc, char** argv) {
 
 //TODO: Come up with a solution that is guaranteed to work when multiple threads are running
 void sighandler(int sig) {
+  init_color(COLOR_WHITE, white.r, white.g, white.b);
+  init_color(COLOR_BLACK, black.r, black.g, black.b);
+  int ret1 = init_color(COLOR_RED, red.r, red.g, red.b);
+  init_color(COLOR_GREEN, green.r, green.g, green.b);
+  init_color(COLOR_YELLOW, yellow.r, yellow.g, yellow.b);
+
+  //FILE *fp;
+  //fp = fopen("/home/dobyrch/Documents/termboy/out.log", "w");
+  //fprintf(fp, "In handler\n");
+  //fprintf(fp, "Setting color: %d\n", ret1);
+
   endwin();
+  //fprintf(fp, "Closed window\n");
+  init_color(COLOR_WHITE, white.r, white.g, white.b);
+  init_color(COLOR_BLACK, black.r, black.g, black.b);
+  int ret2 = init_color(COLOR_RED, red.r, red.g, red.b);
+  init_color(COLOR_GREEN, green.r, green.g, green.b);
+  init_color(COLOR_YELLOW, yellow.r, yellow.g, yellow.b);
+  //fprintf(fp, "Setting color: %d\n", ret2);
   inputManager->restoreKeyboard();
+  //fprintf(fp, "Restored keyboard\n");
   utility->unload();
-  printf("Caught signal: %d\n", sig);
-  exit(EXIT_SUCCESS);
+  //fprintf(fp, "Unloaded game\n");
+  //fprintf(fp, "Caught signal: %d\n", sig);
+  //fprintf(fp, "Printed signal\n");
+  //fclose(fp);
+  exit(0);
 }
 
 int main(int argc, char** argv) {
   signal(SIGINT, sighandler);
   signal(SIGQUIT, sighandler);
   signal(SIGSEGV, sighandler);
-
   audio.clear();
 
   new Program(argc, argv);

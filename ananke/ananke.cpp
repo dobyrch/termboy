@@ -3,12 +3,6 @@
 #include "heuristics/game-boy.hpp"
 using namespace nall;
 
-namespace Database {
-//  #include "database/super-famicom.hpp"
-//  #include "database/sufami-turbo.hpp"
-//  #include "database/bsx-satellaview.hpp"
-};
-
 //#include "resource/resource.cpp"
 #include "ananke.hpp"
 #include "archive.cpp"
@@ -22,9 +16,8 @@ Ananke::Ananke() {
   //TODO: Don't generate Emulation directory
   //Either warn that the configuration file does not exist,
   //or put all data in a .termboy directory
-  libraryPath = string::read({configpath(), "termboy/library.bml"}).strip().ltrim<1>("Path: ").replace("\\", "/");
-  if(libraryPath.empty()) libraryPath = {userpath(), "Emulation/"};
-  if(libraryPath.endswith("/") == false) libraryPath.append("/");
+  libraryPath = {configpath(), "termboy/"};
+  int dummy = 0;
 }
 
 bool Ananke::supported(const string &filename) {

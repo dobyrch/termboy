@@ -1,7 +1,7 @@
 #ifdef CPU_CPP
+#include <signal.h>
 #include <sys/time.h>
 #include "../../target-ethos/input/input.hpp"
-
 using namespace input;
 
 unsigned CPU::wram_addr(uint16 addr) const {
@@ -69,10 +69,19 @@ void CPU::mmio_joyp_poll() {
       button &= ~(1 << 3);
       break;
     case 1: /* Escape down */
+      //init_color(COLOR_WHITE, white.r, white.g, white.b);
+      //init_color(COLOR_BLACK, black.r, black.g, black.b);
+      //init_color(COLOR_RED, red.r, red.g, red.b);
+      //init_color(COLOR_GREEN, green.r, green.g, green.b);
+      //init_color(COLOR_YELLOW, yellow.r, yellow.g, yellow.b);
       //TODO:  restore keyboard and quit
       //inputManager->restoreKeyboard();
-      exit(EXIT_SUCCESS);
+      //exit(EXIT_SUCCESS);
+      raise(SIGINT);
       break;
+    case 129:
+      raise(SIGINT);
+      //exit(EXIT_SUCCESS);
     }
   //}
 

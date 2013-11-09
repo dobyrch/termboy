@@ -2,6 +2,7 @@
 #
 #TODO: add license information here
 #
+cd /usr/share/termboy
 
 USER=username
 REMOTE=remote.host.name
@@ -21,23 +22,23 @@ fi
 
 clear
 setfont -o  ~/.config/termboy/font.orig
-setfont -h4 /usr/share/termboy/font.psfu.gz
+setfont -h4 font.psfu.gz
 
 RET=1
 #TODO: check that termboy binary is installed
 #ssh "$USER@$REMOTE" <<- HERE
 #ssh "debian" <<HERE
-/usr/share/termboy/termboy-bin $1
+termboy-bin $1
 RET=$?
 #exit
 #HERE
 
 stty sane
-kbd_mode -a
+kbd_mode -u
 #TODO: check if font exists
 setfont ~/.config/termboy/font.orig
 rm ~/.config/termboy/font.orig
-#clear
+clear
 
 #Use unique error code to indicate that Termboy exited abnormally with a message
 if [ $RET -ne 0 ]; then
