@@ -24,16 +24,13 @@ After running `make install`, start Termboy by running `termboy <ROM.gb>` in a L
 
 TODO
 ----
-* Figure out why Enter generates SIGQUIT
-* Restore terminal settings after exit (including font & color)
 * Allow in-game volume adjustment
-* Accept parameters in run script; handle bad input
+* Accept parameters in run script; handle bad input (spaces in arguments)
 * Detect terminal resolution
-* GB Color support
-* Remove configuration files
-* Check for boot.rom
+* Color filters
+* Remove configuration files (low priority)
 * Continue deleting unused code
-* Consolidate makefiles
+* control customization 
 
 Wishlist
 --------
@@ -44,3 +41,4 @@ Wishlist
 * Create Arch PKGBUILD
 * Port to other Unices
 * Optimize for Raspberry Pi
+* Consolidate makefiles
