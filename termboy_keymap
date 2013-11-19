@@ -2,7 +2,7 @@
 
 loc=~/.config/termboy/keymap.conf
 
-if [ -e "" ]
+if [ -e $loc ]
 then
   rm $loc
 fi
@@ -60,77 +60,77 @@ for index in 0 1 2 3 4 5 6 7 8
 do
 	case "${Key_array[index]}" in
 
-		1) echo "0x02" >> $loc
+		1) echo "02" >> $loc
 			;;
-		2) echo "0x03" >> $loc
+		2) echo "03" >> $loc
    			;;
-		3) echo "0x04" >> $loc
+		3) echo "04" >> $loc
 			;;
-		4) echo "0x05" >> $loc
+		4) echo "05" >> $loc
 			;;
-		5) echo "0x06" >> $loc
+		5) echo "06" >> $loc
 			;;
-		6) echo "0x07" >> $loc
+		6) echo "07" >> $loc
 			;;
-		7) echo "0x08" >> $loc
+		7) echo "08" >> $loc
 			;;
-		8) echo "0x09" >> $loc 
+		8) echo "09" >> $loc 
 			;;
-		9) echo "0x0a" >> $loc
+		9) echo "10" >> $loc
 			;;
-		0) echo "0x0b" >> $loc
+		0) echo "11" >> $loc
 			;;
-		q) echo "0x10" >> $loc
+		q) echo "12" >> $loc
 			;;
-		w) echo "0x11" >> $loc
+		w) echo "13" >> $loc
 			;;
-		e) echo "0x12" >> $loc
+		e) echo "14" >> $loc
 			;;
-		r) echo "0x13" >> $loc
+		r) echo "15" >> $loc
 			;;
-		t) echo "0x14" >> $loc
+		t) echo "16" >> $loc
 			;;
-		y) echo "0x15" >> $loc
+		y) echo "17" >> $loc
 			;;
-		u) echo "0x16" >> $loc
+		u) echo "18" >> $loc
 			;;
-		i) echo "0x17" >> $loc 
+		i) echo "19" >> $loc 
 			;;
-		o) echo "0x18" >> $loc
+		o) echo "20" >> $loc
 			;;
-		p) echo "0x19" >> $loc
+		p) echo "21" >> $loc
 			;;
-		a) echo "0x1e" >> $loc
+		a) echo "30" >> $loc
 			;;
-		s) echo "0x1f" >> $loc
+		s) echo "31" >> $loc
 			;;
-		d) echo "0x20" >> $loc
+		d) echo "32" >> $loc
 			;;
-		f) echo "0x21" >> $loc
+		f) echo "33" >> $loc
 			;;
-		g) echo "0x22" >> $loc
+		g) echo "34" >> $loc
 			;;
-		h) echo "0x23" >> $loc
+		h) echo "35" >> $loc
 			;;
-		j) echo "0x24" >> $loc
+		j) echo "36" >> $loc
 			;;
-		k) echo "0x25" >> $loc
+		k) echo "37" >> $loc
 			;;
-		l) echo "0x26" >> $loc
+		l) echo "38" >> $loc
 			;;
-		z) echo "0x2c" >> $loc
+		z) echo "44" >> $loc
 			;;
-		x) echo "0x2d" >> $loc
+		x) echo "45" >> $loc
 			;;
-		c) echo "0x2e" >> $loc
+		c) echo "46" >> $loc
 			;;
-		v) echo "0x2f" >> $loc 
+		v) echo "47" >> $loc 
 			;;
-		b) echo "0x30" >> $loc 
+		b) echo "48" >> $loc 
 			;;
-		n) echo "0x31" >> $loc 
+		n) echo "49" >> $loc 
 			;;
-		m) echo "0x32" >> $loc 
+		m) echo "50" >> $loc 
 			;;
 		*) echo "invalid input"
 			;;
