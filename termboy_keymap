@@ -1,11 +1,13 @@
 #!/bin/bash
 
-if [ -e "keymap.conf" ]
+loc=~/.config/termboy/keymap.conf
+
+if [ -e "" ]
 then
-  rm keymap.conf
+  rm $loc
 fi
 
-echo "this script generates key mapping for your termboy controls"
+echo "this option generates key mapping for your termboy controls"
 echo "you can choose from the a-z keys and the standard 0-9 keys"
 echo "any numpad mapping will result in mappings to the number row"
 printf "\n"
@@ -58,77 +60,77 @@ for index in 0 1 2 3 4 5 6 7 8
 do
 	case "${Key_array[index]}" in
 
-		1) echo "0x02" >> ~/.config/termboy/Keymap.conf
+		1) echo "0x02" >> $loc
 			;;
-		2) echo "0x03" >> keymap.conf
+		2) echo "0x03" >> $loc
    			;;
-		3) echo "0x04" >> keymap.conf
+		3) echo "0x04" >> $loc
 			;;
-		4) echo "0x05" >> keymap.conf
+		4) echo "0x05" >> $loc
 			;;
-		5) echo "0x06" >> keymap.conf
+		5) echo "0x06" >> $loc
 			;;
-		6) echo "0x07" >> keymap.conf
+		6) echo "0x07" >> $loc
 			;;
-		7) echo "0x08" >> keymap.conf
+		7) echo "0x08" >> $loc
 			;;
-		8) echo "0x09" >> keymap.conf
+		8) echo "0x09" >> $loc 
 			;;
-		9) echo "0x0a" >> keymap.conf
+		9) echo "0x0a" >> $loc
 			;;
-		0) echo "0x0b" >> keymap.conf
+		0) echo "0x0b" >> $loc
 			;;
-		q) echo "0x10" >> keymap.conf
+		q) echo "0x10" >> $loc
 			;;
-		w) echo "0x11" >> keymap.conf
+		w) echo "0x11" >> $loc
 			;;
-		e) echo "0x12" >> keymap.conf
+		e) echo "0x12" >> $loc
 			;;
-		r) echo "0x13" >> keymap.conf
+		r) echo "0x13" >> $loc
 			;;
-		t) echo "0x14" >> keymap.conf
+		t) echo "0x14" >> $loc
 			;;
-		y) echo "0x15" >> keymap.conf
+		y) echo "0x15" >> $loc
 			;;
-		u) echo "0x16" >> keymap.conf
+		u) echo "0x16" >> $loc
 			;;
-		i) echo "0x17" >> keymap.conf
+		i) echo "0x17" >> $loc 
 			;;
-		o) echo "0x18" >> keymap.conf
+		o) echo "0x18" >> $loc
 			;;
-		p) echo "0x19" >> keymap.conf
+		p) echo "0x19" >> $loc
 			;;
-		a) echo "0x1e" >> keymap.conf
+		a) echo "0x1e" >> $loc
 			;;
-		s) echo "0x1f" >> keymap.conf
+		s) echo "0x1f" >> $loc
 			;;
-		d) echo "0x20" >> keymap.conf
+		d) echo "0x20" >> $loc
 			;;
-		f) echo "0x21" >> keymap.conf
+		f) echo "0x21" >> $loc
 			;;
-		g) echo "0x22" >> keymap.conf
+		g) echo "0x22" >> $loc
 			;;
-		h) echo "0x23" >> keymap.conf
+		h) echo "0x23" >> $loc
 			;;
-		j) echo "0x24" >> keymap.conf
+		j) echo "0x24" >> $loc
 			;;
-		k) echo "0x25" >> keymap.conf
+		k) echo "0x25" >> $loc
 			;;
-		l) echo "0x26" >> keymap.conf
+		l) echo "0x26" >> $loc
 			;;
-		z) echo "0x2c" >> keymap.conf
+		z) echo "0x2c" >> $loc
 			;;
-		x) echo "0x2d" >> keymap.conf
+		x) echo "0x2d" >> $loc
 			;;
-		c) echo "0x2e" >> keymap.conf
+		c) echo "0x2e" >> $loc
 			;;
-		v) echo "0x2f" >> keymap.conf
+		v) echo "0x2f" >> $loc 
 			;;
-		b) echo "0x30" >> keymap.conf
+		b) echo "0x30" >> $loc 
 			;;
-		n) echo "0x31" >> keymap.conf
+		n) echo "0x31" >> $loc 
 			;;
-		m) echo "0x32" >> keymap.conf
+		m) echo "0x32" >> $loc 
 			;;
 		*) echo "invalid input"
 			;;
