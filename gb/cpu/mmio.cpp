@@ -2,6 +2,14 @@
 #include <signal.h>
 #include <sys/time.h>
 #include "../../target-ethos/input/input.hpp"
+
+#include <unistd.h>
+#include <sys/types.h>
+#include <pwd.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 using namespace input;
 
 unsigned CPU::wram_addr(uint16 addr) const {
@@ -14,61 +22,71 @@ unsigned CPU::wram_addr(uint16 addr) const {
 void CPU::mmio_joyp_poll() {
   static unsigned button = 0;
   static unsigned dpad = 0;
+  static int keys[9];
+  static int conf_flag = 0;
   int scancode;
+
+  if(!conf_flag){
+    conf_flag = 1;
+    char str [80];
+    char *path;
+    FILE *fp;
+    int error = 0;
+
+    struct passwd *pw = getpwuid(getuid());
+    const char *homedir = pw->pw_dir;
+    const char *temp = "/.config/termboy/keymap.conf";
+
+    path = (char*) malloc(strlen(homedir)+strlen(temp));
+    strcpy(path, homedir);
+    strcat(path, temp);
+    fp = fopen(path, "r");
+
+    if(fp != NULL){
+      for(int i = 0; i < 9; i++){
+        error = fscanf(fp, "%s", str);
+        keys[i]=atoi(str);
+      }
+    }
+    fclose(fp);
+  }
 
   //TODO:  move to Input
   scancode = getch();
   //if (read(STDIN_FILENO, &scancode, 1) > 0) {
-    switch(scancode) {
-    case 33: /* F  down */
-      dpad |= 1 << 0;
-      break;
-    case 161: /* F up */
-      dpad &= ~(1 << 0);
-      break;
-    case 31: /* S down */
-      dpad |= 1 << 1;
-      break;
-    case 159: /* S up */
-      dpad &= ~(1 << 1);
-      break;
-    case 18: /* E down */
-      dpad |= 1 << 2;
-      break;
-    case 146: /* E up */
-      dpad &= ~(1 << 2);
-      break;
-    case 32: /* D down */
-      dpad |= 1 << 3;
-      break;
-    case 160: /* D up */
-      dpad &= ~(1 << 3);
-      break;
-    case 37: /* K down */
-      button |= 1 << 0;
-      break;
-    case 165: /* K up */
-      button &= ~(1 << 0);
-      break;
-    case 36: /* J down */
-      button |= 1 << 1;
-      break;
-    case 164: /* J up */
-      button &= ~(1 << 1);
-      break;
-    case 34: /* G down */
-      button |= 1 << 2;
-      break;
-    case 162: /* G up */
-      button &= ~(1 << 2);
-      break;
-    case 35: /* H down */
-      button |= 1 << 3;
-      break;
-    case 163: /* H up */
-      button &= ~(1 << 3);
-      break;
-    case 1: /* Escape down */
+  if (scancode == keys[8]) /* right  down */
+    dpad |= 1 << 0;
+  else if (scancode == (keys[8]+128)) /* right up */
+    dpad &= ~(1 << 0);
+  else if (scancode == keys[7]) /* left down */
+    dpad |= 1 << 1;
+  else if (scancode == (keys[7]+128)) /* left up */
+    dpad &= ~(1 << 1);
+  else if (scancode == keys[5]) /* up dpad down */
+    dpad |= 1 << 2;
+  else if (scancode == (keys[5]+128)) /* up dpad up */
+    dpad &= ~(1 << 2);
+  else if (scancode == keys[6]) /* down dpad down */
+    dpad |= 1 << 3;
+  else if (scancode == (keys[6]+128)) /* down dpad up */
+    dpad &= ~(1 << 3);
+  else if (scancode == keys[0]) /* A down */
+    button |= 1 << 0;
+  else if (scancode == (keys[0]+128)) /* A up */
+    button &= ~(1 << 0);
+  else if (scancode == keys[1]) /* B down */
+    button |= 1 << 1;
+  else if (scancode == (keys[1]+128)) /* B up */
+    button &= ~(1 << 1);
+  else if (scancode == keys[3]) /* Select down */
+    button |= 1 << 2;
+  else if (scancode == (keys[3]+128)) /* Select up */
+    button &= ~(1 << 2);
+  else if (scancode == keys[2]) /* Start down */
+    button |= 1 << 3;
+  else if (scancode == (keys[2]+128)) /* Start up */
+    button &= ~(1 << 3);
+  else if (scancode == keys[4]){ /* Power down */
       //init_color(COLOR_WHITE, white.r, white.g, white.b);
       //init_color(COLOR_BLACK, black.r, black.g, black.b);
       //init_color(COLOR_RED, red.r, red.g, red.b);
@@ -78,11 +96,11 @@ void CPU::mmio_joyp_poll() {
       //inputManager->restoreKeyboard();
       //exit(EXIT_SUCCESS);
       raise(SIGINT);
-      break;
-    case 129:
+  }
+  else if (keys[4]+128){ /* Power up */
       raise(SIGINT);
       //exit(EXIT_SUCCESS);
-    }
+  }
   //}
 
   /*

@@ -38,7 +38,6 @@ kbd_mode -u
 #TODO: check if font exists
 setfont ~/.config/termboy/font.orig
 rm ~/.config/termboy/font.orig
-clear
 
 #Use unique error code to indicate that Termboy exited abnormally with a message
 if [ $RET -ne 0 ]; then

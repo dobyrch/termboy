@@ -15,7 +15,7 @@ void APU::Main() {
   apu.main();
 }
 
-void APU::main() {
+void APU::main() {/*
   while(true) {
     if(scheduler.sync == Scheduler::SynchronizeMode::All) {
       scheduler.exit(Scheduler::ExitReason::SynchronizeEvent);
@@ -50,7 +50,7 @@ void APU::main() {
 
     clock += cpu.frequency;
     if(clock >= 0 && scheduler.sync != Scheduler::SynchronizeMode::All) co_switch(scheduler.active_thread = cpu.thread);
-  }
+  }*/
 }
 
 void APU::power() {

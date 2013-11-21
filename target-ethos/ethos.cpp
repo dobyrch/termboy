@@ -103,9 +103,9 @@ Program::Program(int argc, char** argv) {
     audio.init();
   }
 
-  init_curses();
-  inputManager = new InputManager();
-  inputManager->setupKeyboard();
+  //init_curses();
+  //inputManager = new InputManager();
+  //inputManager->setupKeyboard();
 
   dspaudio.setPrecision(16);
   dspaudio.setBalance(0.0);
@@ -142,7 +142,7 @@ void sighandler(int sig) {
   //fprintf(fp, "In handler\n");
   //fprintf(fp, "Setting color: %d\n", ret1);
 
-  endwin();
+  //endwin();
   //fprintf(fp, "Closed window\n");
   init_color(COLOR_WHITE, white.r, white.g, white.b);
   init_color(COLOR_BLACK, black.r, black.g, black.b);
@@ -150,7 +150,7 @@ void sighandler(int sig) {
   init_color(COLOR_GREEN, green.r, green.g, green.b);
   init_color(COLOR_YELLOW, yellow.r, yellow.g, yellow.b);
   //fprintf(fp, "Setting color: %d\n", ret2);
-  inputManager->restoreKeyboard();
+  //inputManager->restoreKeyboard();
   //fprintf(fp, "Restored keyboard\n");
   utility->unload();
   //fprintf(fp, "Unloaded game\n");
