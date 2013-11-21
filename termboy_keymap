@@ -1,0 +1,138 @@
+#!/bin/bash
+
+loc=~/.config/termboy/keymap.conf
+
+if [ -e $loc ]
+then
+  rm $loc
+fi
+
+echo "this option generates key mapping for your termboy controls"
+echo "you can choose from the a-z keys and the standard 0-9 keys"
+echo "any numpad mapping will result in mappings to the number row"
+printf "\n"
+
+declare -a Key_array
+Key_array=("*" "*" "*" "*" "*" "*" "*" "*" "*")
+
+echo "enter the key you want mapped to \"A\""
+read temp;
+Key_array[0]=$temp
+
+echo "enter the key you want mapped to \"B\""
+read temp;
+Key_array[1]=$temp
+
+echo "enter the key you want mapped to \"Start\""
+read temp;
+Key_array[2]=$temp
+
+echo "enter the key you want mapped to \"Select\""
+read temp;
+Key_array[3]=$temp
+
+echo "enter the key you want mapped to \"Power Switch\""
+read temp;
+Key_array[4]=$temp
+
+echo "enter the key you want mapped to \"Up (D-Pad)\""
+read temp;
+Key_array[5]=$temp
+
+echo "enter the key you want mapped to \"Down (D-Pad)\""
+read temp;
+Key_array[6]=$temp
+
+echo "enter the key you want mapped to \"Left (D-Pad)\""
+read temp;
+Key_array[7]=$temp
+
+echo "enter the key you want mapped to \"Right (D-Pad)\""
+read temp;
+Key_array[8]=$temp
+
+for index in 0 1 2 3 4 5 6 7 8 
+do
+	Key_array[index]=$(echo ${Key_array[index]} | tr '[:upper:]' '[:lower:]')
+done
+
+for index in 0 1 2 3 4 5 6 7 8
+do
+	case "${Key_array[index]}" in
+
+		1) echo "02" >> $loc
+			;;
+		2) echo "03" >> $loc
+   			;;
+		3) echo "04" >> $loc
+			;;
+		4) echo "05" >> $loc
+			;;
+		5) echo "06" >> $loc
+			;;
+		6) echo "07" >> $loc
+			;;
+		7) echo "08" >> $loc
+			;;
+		8) echo "09" >> $loc 
+			;;
+		9) echo "10" >> $loc
+			;;
+		0) echo "11" >> $loc
+			;;
+		q) echo "12" >> $loc
+			;;
+		w) echo "13" >> $loc
+			;;
+		e) echo "14" >> $loc
+			;;
+		r) echo "15" >> $loc
+			;;
+		t) echo "16" >> $loc
+			;;
+		y) echo "17" >> $loc
+			;;
+		u) echo "18" >> $loc
+			;;
+		i) echo "19" >> $loc 
+			;;
+		o) echo "20" >> $loc
+			;;
+		p) echo "21" >> $loc
+			;;
+		a) echo "30" >> $loc
+			;;
+		s) echo "31" >> $loc
+			;;
+		d) echo "32" >> $loc
+			;;
+		f) echo "33" >> $loc
+			;;
+		g) echo "34" >> $loc
+			;;
+		h) echo "35" >> $loc
+			;;
+		j) echo "36" >> $loc
+			;;
+		k) echo "37" >> $loc
+			;;
+		l) echo "38" >> $loc
+			;;
+		z) echo "44" >> $loc
+			;;
+		x) echo "45" >> $loc
+			;;
+		c) echo "46" >> $loc
+			;;
+		v) echo "47" >> $loc 
+			;;
+		b) echo "48" >> $loc 
+			;;
+		n) echo "49" >> $loc 
+			;;
+		m) echo "50" >> $loc 
+			;;
+		*) echo "invalid input"
+			;;
+	esac
+done
