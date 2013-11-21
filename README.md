@@ -8,7 +8,7 @@ Compiling
 ---------
 Required Tools:
 
-* make
+* make (GNU)
 * g++ (>= 4.7)
 
 Required Libraries:
@@ -16,7 +16,7 @@ Required Libraries:
 * alsa
 * ncurses
 
-**Note:** The definition for mvaddwstr is in "ncurses/curses.h" on Ubuntu, but it's just "curses.h" on Arch Linux.  For development purposes, Just create an ncurses folder in /usr/include and symlink ncurses/curses.h to curses.h.
+**Note:** The definition for mvaddwstr is in "ncursesw/curses.h" on Ubuntu, but it's just "curses.h" on Arch Linux.  For development purposes, Just create an ncurses folder in /usr/include and symlink ncursesw/curses.h to curses.h.
 
 Usage
 -----
@@ -28,17 +28,17 @@ TODO
 * Accept parameters in run script; handle bad input (spaces in arguments)
 * Detect terminal resolution
 * Color filters
-* Remove configuration files (low priority)
 * Continue deleting unused code
-* control customization 
+* control customization
+* Remove/consolidate configuration files
+* Consolidate makefiles
 
 Wishlist
 --------
 * Rewrite in ANSI C
 * Reformat code to conform to [Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle)
-* Remove GCC-specific code
+* Remove gcc-specific code (compile with clang)
 * Write man page
 * Create Arch PKGBUILD
 * Port to other Unices
 * Optimize for Raspberry Pi
-* Consolidate makefiles
