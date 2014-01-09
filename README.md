@@ -4,6 +4,8 @@ Termboy
 Termboy is a Nintendo Game Boy emulator...for your terminal.  
 Termboy is based on [Higan](http://byuu.org/higan/), but uses ncurses to render the screen.
 
+An WIP implementation written in Go is also [available](http://github.com/dobyrch/termboy-go), which requires no external dependencies (not even ncurses!).
+
 Compiling
 ---------
 Required Tools:
