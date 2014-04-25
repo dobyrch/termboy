@@ -15,7 +15,7 @@ if [ $# -ne 1 ]; then
 fi
 
 #TODO: don't check until after logging into remote host
-if [ ! -f $1 ]; then
+if [ ! -f "$1" ]; then
     echo "$name: No such file $1"
     exit 1
 fi
@@ -28,7 +28,7 @@ RET=1
 #TODO: check that termboy binary is installed
 #ssh "$USER@$REMOTE" <<- HERE
 #ssh "debian" <<HERE
-$INSTALL_PATH/termboy-bin $1
+$INSTALL_PATH/termboy-bin "$1"
 RET=$?
 #exit
 #HERE
